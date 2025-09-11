@@ -6,6 +6,7 @@ import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
 import BackgroundImage from './assets/background.jpg';
 import { Routes, Route } from 'react-router-dom';
+import { Analytics } from '@vercel/analytics/react';
 
 const App: React.FC = () => {
   return (
@@ -39,6 +40,9 @@ const App: React.FC = () => {
           </Routes>
         </main>
       </div>
+      
+      {/* Vercel Analytics */}
+      <Analytics />
     </div>
   );
 };
