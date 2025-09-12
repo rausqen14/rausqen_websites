@@ -20,8 +20,8 @@ const App: React.FC = () => {
           backgroundPosition: '30% 50%'
         }}
       >
-        {/* Dark overlay */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
+        {/* Light dark overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/30"></div>
       </div>
 
       {/* Content */}

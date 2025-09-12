@@ -496,8 +496,7 @@ Notes / Limitations
           }}
         />
       )}
-      {/* Dark overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/70" style={{zIndex: 2}}></div>
+
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
         <Header />
@@ -512,7 +511,7 @@ Notes / Limitations
         </div>
         <div className="flex flex-1 w-full pt-20 pb-16">
           {/* Sol cam efektli dikdörtgen */}
-          <div className="hidden md:flex flex-col items-start justify-start absolute top-16 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 5rem)'}}>
+          <div className="hidden md:flex flex-col items-start justify-start absolute top-20 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 6rem)'}}>
             <div className="flex flex-col gap-4 w-full">
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
@@ -521,7 +520,7 @@ Notes / Limitations
             </div>
           </div>
           {/* Sağ ana içerik */}
-          <section className="flex-1 flex flex-col items-center justify-start w-full md:ml-96 md:pl-8 -mt-4">
+          <section className="flex-1 flex flex-col items-center justify-start w-full md:ml-96 md:pl-8 mt-0">
             {activeSection === 'portfolio' && (
               <div className="w-full px-4">
                 <div className="grid grid-cols-1 gap-8">
@@ -529,7 +528,7 @@ Notes / Limitations
                     <div 
                       key={project.id} 
                       id={`project-${project.id}`}
-                      className="bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none overflow-hidden transition-all duration-300 w-full"
+                      className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none overflow-hidden transition-all duration-300 w-full"
                     >
                       <div className="p-12">
                         <h3 className="text-white tracking-widest text-lg mb-4 uppercase cursor-default">{project.title}</h3>
@@ -705,7 +704,7 @@ Notes / Limitations
             )}
             {activeSection === 'education' && (
               <div className="w-full flex flex-col items-start justify-start px-0" style={{marginBottom: '29rem'}}>
-                <div className="bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
+                <div className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
                   <div className="text-gray-300 text-lg leading-relaxed">
                     <p className="mb-8">
                       I am interested in artificial intelligence and data-driven problem solving, aiming to build a career that combines technical expertise and continuous growth. My academic journey from Electrical and Electronics Engineering to Statistics directed my focus toward data analysis and artificial intelligence, strengthening my analytical perspective.

@@ -21,7 +21,7 @@ const Hero: React.FC = () => {
   <h1 className="text-5xl md:text-7xl lg:text-8xl font-thin text-white tracking-widest cursor-default drop-shadow-2xl" style={{ textShadow: '0 4px 20px rgba(0,0,0,0.8), 0 0 30px rgba(255,255,255,0.4), 0 0 60px rgba(255,255,255,0.2)' }}>
           RausQen
         </h1>
-        <p className="mt-4 text-lg md:text-xl lg:text-2xl text-white font-light tracking-[0.3em] uppercase cursor-default" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.6), 0 0 80px rgba(255,255,255,0.3), 0 0 120px rgba(255,255,255,0.1)' }}>
+        <p className="mt-4 text-base md:text-lg lg:text-xl text-white font-light tracking-[0.3em] uppercase cursor-default" style={{ textShadow: '0 4px 15px rgba(0,0,0,0.9), 0 0 40px rgba(255,255,255,0.6), 0 0 80px rgba(255,255,255,0.3), 0 0 120px rgba(255,255,255,0.1)' }}>
           AI Engineer
         </p>
         <button 
