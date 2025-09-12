@@ -21,7 +21,7 @@ const App: React.FC = () => {
         }}
       >
         {/* Dark overlay */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black/50"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/70"></div>
       </div>
 
       {/* Content */}

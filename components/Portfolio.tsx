@@ -497,27 +497,27 @@ Notes / Limitations
         />
       )}
       {/* Dark overlay */}
-      <div className="absolute top-0 left-0 w-full h-full bg-black/50" style={{zIndex: 2}}></div>
+      <div className="absolute top-0 left-0 w-full h-full bg-black/70" style={{zIndex: 2}}></div>
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
         <Header />
         {/* Mobilde menü başlıkları 2x2 grid */}
   <div className="md:hidden w-full px-4 pt-24">
           <div className="grid grid-cols-2 gap-2">
-            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='portfolio' ? 'bg-white/10' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</button>
-            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='certificates' ? 'bg-white/10' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</button>
-            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='ai-notes' ? 'bg-white/10' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</button>
-            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='education' ? 'bg-white/10' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</button>
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='portfolio' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</button>
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='certificates' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</button>
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='ai-notes' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</button>
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='education' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</button>
           </div>
         </div>
         <div className="flex flex-1 w-full pt-20 pb-16">
           {/* Sol cam efektli dikdörtgen */}
-          <div className="hidden md:flex flex-col items-start justify-start absolute top-16 left-0 w-96 min-w-[320px] p-8 border border-white/10 shadow-lg rounded-none" style={{height: 'calc(100vh - 5rem)'}}>
+          <div className="hidden md:flex flex-col items-start justify-start absolute top-16 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 5rem)'}}>
             <div className="flex flex-col gap-4 w-full">
-              <a href="#" className="w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left" onClick={() => setActiveSection('portfolio')}>Projects</a>
-              <a href="#" className="w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left" onClick={() => setActiveSection('certificates')}>Certificates</a>
-              <a href="#" className="w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left" onClick={() => setActiveSection('ai-notes')}>Research Notes</a>
-              <a href="#" className="w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left" onClick={() => setActiveSection('education')}>ABOUT ME</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'ai-notes' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'education' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</a>
             </div>
           </div>
           {/* Sağ ana içerik */}
@@ -529,7 +529,7 @@ Notes / Limitations
                     <div 
                       key={project.id} 
                       id={`project-${project.id}`}
-                      className="border border-white/10 shadow-lg rounded-none overflow-hidden transition-all duration-300 w-full"
+                      className="bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none overflow-hidden transition-all duration-300 w-full"
                     >
                       <div className="p-12">
                         <h3 className="text-white tracking-widest text-lg mb-4 uppercase cursor-default">{project.title}</h3>
@@ -605,7 +605,7 @@ Notes / Limitations
                             {project.images.map((image, index) => (
                               <div 
                                 key={index} 
-                                className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-sm rounded-none overflow-hidden cursor-pointer"
+                                className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-lg rounded-none overflow-hidden cursor-pointer"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   openProjectModal(project, index);
@@ -705,7 +705,7 @@ Notes / Limitations
             )}
             {activeSection === 'education' && (
               <div className="w-full flex flex-col items-start justify-start px-0" style={{marginBottom: '29rem'}}>
-                <div className="border border-white/10 shadow-lg p-16 mb-8 w-full max-w-7xl ml-4">
+                <div className="bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
                   <div className="text-gray-300 text-lg leading-relaxed">
                     <p className="mb-8">
                       I am interested in artificial intelligence and data-driven problem solving, aiming to build a career that combines technical expertise and continuous growth. My academic journey from Electrical and Electronics Engineering to Statistics directed my focus toward data analysis and artificial intelligence, strengthening my analytical perspective.

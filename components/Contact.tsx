@@ -5,7 +5,7 @@ import KaggleIcon from './icons/KaggleIcon';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="py-4 md:py-6 mt-16 border border-white/10 shadow-lg">
+    <section id="contact" className="py-4 md:py-6 mt-16 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px]">
       <div className="container mx-auto px-6">
         <div className="max-w-xl mx-auto text-center">
             <div className="flex flex-col items-center">
@@ -15,9 +15,9 @@ const Contact: React.FC = () => {
                         <span>rausqen@hotmail.com</span>
                     </a>
                 </div>
-                <div className="flex space-x-6">
+                <div className="flex space-x-6 items-center">
                     <a href="https://www.linkedin.com/in/rausqen/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><LinkedInIcon className="w-8 h-8"/></a>
-                    <a href="https://www.kaggle.com/rausqen" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors"><KaggleIcon className="w-8 h-8"/></a>
+                    <a href="https://www.kaggle.com/rausqen" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors translate-y-0.5"><KaggleIcon className="w-8 h-8"/></a>
                 </div>
 
                 <div className="w-full mt-12 border-t border-white/10 pt-6 text-center">

@@ -40,9 +40,9 @@ const projectsData: Project[] = [
 
 const Projects: React.FC = () => {
   return (
-    <section id="projects" className="py-16 md:py-20 border border-white/10 shadow-lg">
+    <section id="projects" className="py-16 md:py-20 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px]">
       <div className="container mx-auto px-6">
-        <h2 className="text-4xl font-medium text-center text-white mb-16 uppercase tracking-widest">
+        <h2 className="text-4xl font-medium text-center text-white mb-16 uppercase tracking-widest cursor-default">
           Featured Projects
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-8">
