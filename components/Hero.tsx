@@ -26,7 +26,7 @@ const Hero: React.FC = () => {
         </p>
         <button 
           onClick={handleExploreProjects}
-          className="mt-12 inline-block border border-transparent text-white font-light py-3 px-10 rounded-sm tracking-widest transition-all duration-300 hover:bg-white/10 hover:border-gray-400"
+          className="mt-12 inline-block border border-white/30 text-white font-light py-3 px-10 rounded-sm tracking-widest transition-all duration-300 hover:bg-white/10 hover:border-white/60"
         >
           EXPLORE PROJECTS
         </button>
