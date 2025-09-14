@@ -19,7 +19,10 @@ const App: React.FC = () => {
           zIndex: 0,
           backgroundPosition: '30% 50%'
         }}
-      />
+      >
+        {/* Very light dark overlay */}
+        <div className="absolute top-0 left-0 w-full h-full bg-black/10"></div>
+      </div>
 
       {/* Content */}
       <div className="relative z-10">
