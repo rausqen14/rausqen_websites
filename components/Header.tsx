@@ -38,11 +38,11 @@ const Header: React.FC = () => {
         <nav className="hidden md:flex space-x-0">
           {navLinks.map((link) => (
             link.href.startsWith('/') ? (
-              <a key={link.href} href={link.href} className="text-white hover:text-white transition-all duration-300 tracking-widest text-sm px-4 py-2 rounded-sm hover:bg-black/30 hover:backdrop-blur-[2px] border border-transparent hover:border-white/15">
+              <a key={link.href} href={link.href} className="text-white hover:text-gray-400 transition-colors duration-300 tracking-widest text-sm px-4 py-2">
                 {link.label}
               </a>
             ) : (
-              <a key={link.href} href={link.href} className="text-white hover:text-white transition-all duration-300 tracking-widest text-sm px-4 py-2 rounded-sm hover:bg-black/30 hover:backdrop-blur-[2px] border border-transparent hover:border-white/15">
+              <a key={link.href} href={link.href} className="text-white hover:text-gray-400 transition-colors duration-300 tracking-widest text-sm px-4 py-2">
                 {link.label}
               </a>
             )
@@ -61,11 +61,11 @@ const Header: React.FC = () => {
       <nav className="flex flex-col items-center py-4 space-y-4">
         {navLinks.map((link) => (
           link.href.startsWith('/') ? (
-            <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-white hover:text-white transition-all duration-300 text-lg px-6 py-3 rounded-sm hover:bg-black/30 hover:backdrop-blur-[2px] border border-transparent hover:border-white/15">
+            <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-white hover:text-gray-400 transition-colors duration-300 text-lg px-6 py-3">
               {link.label}
             </a>
           ) : (
-            <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-white hover:text-white transition-all duration-300 text-lg px-6 py-3 rounded-sm hover:bg-black/30 hover:backdrop-blur-[2px] border border-transparent hover:border-white/15">
+            <a key={link.href} href={link.href} onClick={() => setIsMenuOpen(false)} className="text-white hover:text-gray-400 transition-colors duration-300 text-lg px-6 py-3">
               {link.label}
             </a>
           )

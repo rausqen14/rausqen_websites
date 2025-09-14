@@ -112,15 +112,14 @@ const Certificates: React.FC = () => {
         {certificateImages.map((src, idx) => (
           <div 
             key={src} 
-            className={`bg-white/2 border border-white/10 shadow-lg${isSafari ? '' : ' backdrop-blur-sm'} rounded-none overflow-hidden flex items-center justify-center cursor-pointer`} 
+            className={`bg-white/2 border border-white/10 shadow-lg${isSafari ? '' : ' backdrop-blur-sm'} rounded-none overflow-hidden flex items-center justify-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl`} 
             onClick={() => openModal(src)}
           >
             <img
               src={src}
               alt={`Certificate ${idx + 1}`}
-              className="object-contain w-full h-48 bg-black"
+              className="object-contain w-full h-48"
               loading="eager"
-              style={{ background: '#222' }}
             />
           </div>
         ))}
@@ -146,8 +145,7 @@ const Certificates: React.FC = () => {
             {selectedIdx > 0 && (
               <button 
                 onClick={showPrev} 
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-white text-3xl px-2 py-1 transition-all duration-300 hover:text-white/50 z-50" 
-                style={{ WebkitBackdropFilter: 'opacity(0.5)', backdropFilter: 'opacity(0.5)' }}
+                className="absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl z-50 hover:text-white/50 transition-colors"
                 aria-label="Önceki"
               >
                 &#x276E;
@@ -157,8 +155,7 @@ const Certificates: React.FC = () => {
             {selectedIdx < certificateImages.length - 1 && (
               <button 
                 onClick={showNext} 
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-3xl px-2 py-1 transition-all duration-300 hover:text-white/50 z-50" 
-                style={{ WebkitBackdropFilter: 'opacity(0.5)', backdropFilter: 'opacity(0.5)' }}
+                className="absolute -right-12 top-1/2 -translate-y-1/2 text-white text-3xl z-50 hover:text-white/50 transition-colors"
                 aria-label="Sonraki"
               >
                 &#x276F;

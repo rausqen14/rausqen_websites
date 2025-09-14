@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import type { Project } from '../types';
@@ -35,10 +34,10 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                     </span>
                 ))}
             </div>
-            <p className="text-gray-300 text-sm mb-4 leading-relaxed flex-grow">{project.description}</p>
+            <p className="text-gray-300 text-sm mb-4 leading-relaxed flex-grow cursor-default">{project.description}</p>
             <button 
               onClick={handleViewProject}
-              className="mt-auto inline-block border border-gray-600 text-white text-sm font-semibold py-2 px-4 transition-all duration-300 text-center hover:bg-white/10 hover:border-gray-400"
+              className="mt-auto inline-block border border-gray-600 text-white text-sm font-semibold py-2 px-4 transition-all duration-300 text-center hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400"
             >
                 View Project
             </button>

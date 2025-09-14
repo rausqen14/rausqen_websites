@@ -118,13 +118,12 @@ const AiNotes: React.FC = () => {
     <section id="ai-notes" className="px-4 flex flex-col items-center">
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4 w-full max-w-6xl">
         {aiNoteImages.map((src, idx) => (
-          <div key={src} className={`bg-white/2 border border-white/10 shadow-lg${isSafari ? '' : ' backdrop-blur-sm'} rounded-none overflow-hidden flex items-center justify-center cursor-pointer`} onClick={() => openModal(src)}>
+          <div key={src} className={`bg-white/2 border border-white/10 shadow-lg${isSafari ? '' : ' backdrop-blur-sm'} rounded-none overflow-hidden flex items-center justify-center cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl`} onClick={() => openModal(src)}>
             <img
               src={src}
               alt={`AI Note ${idx + 1}`}
-              className="object-contain w-full h-48 bg-black"
+              className="object-contain w-full h-48"
               loading="eager"
-              style={{ background: '#222' }}
             />
           </div>
         ))}
@@ -150,8 +149,7 @@ const AiNotes: React.FC = () => {
             {selectedIdx > 0 && (
               <button 
                 onClick={showPrev} 
-                className="absolute left-2 top-1/2 -translate-y-1/2 text-white text-3xl px-2 py-1 transition-all duration-300 hover:text-white/50 z-50" 
-                style={{ WebkitBackdropFilter: 'opacity(0.5)', backdropFilter: 'opacity(0.5)' }}
+                className="absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl z-50 hover:text-white/50 transition-colors"
                 aria-label="Önceki"
               >
                 &#x276E;
@@ -161,8 +159,7 @@ const AiNotes: React.FC = () => {
             {selectedIdx < aiNoteImages.length - 1 && (
               <button 
                 onClick={showNext} 
-                className="absolute right-2 top-1/2 -translate-y-1/2 text-white text-3xl px-2 py-1 transition-all duration-300 hover:text-white/50 z-50" 
-                style={{ WebkitBackdropFilter: 'opacity(0.5)', backdropFilter: 'opacity(0.5)' }}
+                className="absolute -right-12 top-1/2 -translate-y-1/2 text-white text-3xl z-50 hover:text-white/50 transition-colors"
                 aria-label="Sonraki"
               >
                 &#x276F;

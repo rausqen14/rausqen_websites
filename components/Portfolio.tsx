@@ -513,10 +513,10 @@ Notes / Limitations
           {/* Sol cam efektli dikdörtgen */}
           <div className="hidden md:flex flex-col items-start justify-start absolute top-20 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 6rem)'}}>
             <div className="flex flex-col gap-4 w-full">
-              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
-              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
-              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'ai-notes' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</a>
-              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 hover:bg-white/10 hover:border-gray-400 text-left ${activeSection === 'education' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'ai-notes' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'education' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</a>
             </div>
           </div>
           {/* Sağ ana içerik */}
@@ -532,7 +532,7 @@ Notes / Limitations
                     >
                       <div className="p-12">
                         <h3 className="text-white tracking-widest text-lg mb-4 uppercase cursor-default">{project.title}</h3>
-                        <div className="text-gray-300 text-sm mb-4 leading-relaxed whitespace-pre-line">
+                        <div className="text-gray-300 text-sm mb-4 leading-relaxed whitespace-pre-line cursor-default">
                           {project.description.split('\n').map((line, index) => {
                             // Check if line is a section header (contains specific keywords and no dash)
                             const isHeader = (
@@ -593,7 +593,7 @@ Notes / Limitations
                         </div>
                         <div className="flex flex-wrap gap-2 mb-4">
                           {project.tags.map((tag) => (
-                            <span key={tag} className="inline-block border border-gray-600 px-3 py-1 text-xs font-semibold text-gray-300 mr-2 mb-2 transition-colors duration-300 hover:bg-white/10 hover:border-gray-400">
+                            <span key={tag} className="inline-block border border-gray-600 px-3 py-1 text-xs font-semibold text-gray-300 mr-2 mb-2 transition-all duration-300 hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400 cursor-default">
                               {tag}
                             </span>
                           ))}
@@ -604,7 +604,7 @@ Notes / Limitations
                             {project.images.map((image, index) => (
                               <div 
                                 key={index} 
-                                className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-lg rounded-none overflow-hidden cursor-pointer"
+                                className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-lg rounded-none overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
                                 onClick={(e) => {
                                   e.stopPropagation();
                                   openProjectModal(project, index);
@@ -634,7 +634,7 @@ Notes / Limitations
                               href={project.kaggleUrl} 
                               target="_blank" 
                               rel="noopener noreferrer" 
-                              className="inline-block border border-gray-600 text-white text-sm font-semibold py-2 px-4 rounded-none transition-all duration-300 hover:bg-white/10 hover:border-gray-400"
+                              className="inline-block border border-gray-600 text-white text-sm font-semibold py-2 px-4 rounded-none transition-all duration-300 hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400"
                             >
                               View on Kaggle
                             </a>
