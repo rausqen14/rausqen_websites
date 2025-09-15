@@ -1,0 +1,724 @@
+import React, { useState, useEffect } from 'react';
+import Header from './Header';
+import Certificates from './Certificates';
+import Contact from './Contact';
+import type { Project } from '../types';
+
+// Safari tespiti
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
+const Portfolio: React.FC = () => {
+  const [activeSection, setActiveSection] = useState<'portfolio' | 'certificates' | 'education'>('portfolio');
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [zoom, setZoom] = useState(1);
+  const [isDragging, setIsDragging] = useState(false);
+  const [position, setPosition] = useState({ x: 0, y: 0 });
+  const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
+
+  const portfolioProjects: Project[] = [
+    {
+      id: 1,
+      title: 'Legal AI Assistant',
+      description: `Goal: Develop an AI-powered legal assistant capable of processing hundreds of thousands of legal documents and delivering accurate, professional, and source-backed answers instantly.
+
+Model Selection & Initial Training
+
+- Started with Meta Llama 3 8B Instruct (GGUF Q6_K), trained locally.
+
+- Fine-tuned with legal datasets collected online.
+
+- The model answered simple questions correctly but struggled with complex reasoning.
+
+Dataset & RAG Pipeline
+
+- Integrated Supreme Court (Yargıtay) decisions into the system.
+
+- Built a vector database with 300K+ decisions → 2.4M chunks.
+
+- 22 hours of processing time required.
+
+- Still, the model's reasoning remained insufficient for complex queries.
+
+Model Upgrade & Reasoning Boost
+
+- Switched to Gemini 1.5 Flash.
+
+- Achieved a significant improvement in reasoning capability.
+
+Prompt Engineering
+
+- Gemini's answers lacked a formal, legal tone.
+
+- Applied prompt engineering to enforce professional and authoritative legal language.
+
+Re-Ranking Layer
+
+- Added a re-ranking mechanism to the RAG pipeline.
+
+- The system retrieved the top 15 most relevant documents and used only those above a set threshold.
+
+This approach:
+
+- Reduced hallucinations
+
+- Improved consistency
+
+- Enhanced overall answer quality
+
+Outcome
+
+- Instant, source-backed answers (laws & precedents cited)
+
+- Improved reasoning & professional legal tone
+
+- Scalable system: 300K+ documents, 2.4M chunks, 22h indexing
+
+- A reliable Legal AI Assistant built on RAG + Re-ranking + Prompt Engineering`,
+      imageUrl: '',
+      kaggleUrl: '',
+      tags: ['RAG', 'OCR', 'Semantic Search', 'Prompt Engineering', 'Fine-Tuning', 'ChromaDB', 'LlamaIndex', 'PyTorch', 'Google Cloud API Integration'],
+      images: [
+        '/legal_ai/Ekran Görüntüsü (894).png',
+        '/legal_ai/Ekran Görüntüsü (895).png',
+        '/legal_ai/Ekran Görüntüsü (896).png',
+        '/legal_ai/Ekran Görüntüsü (897).png',
+        '/legal_ai/Ekran Görüntüsü (898).png',
+        '/legal_ai/Ekran Görüntüsü (899).png',
+        '/legal_ai/Ekran Görüntüsü (900).png',
+        '/legal_ai/Ekran Görüntüsü (901).png'
+      ]
+    },
+    {
+      id: 2,
+      title: 'LLM-Powered Dashboard',
+      description: `Goal: Build an AI-powered dashboard that analyzes uploaded Excel/CSV datasets and generates meaningful summaries, visualizations, and actionable recommendations. Designed for non-technical users who need decision support and technical users who want quick data preview & EDA (Exploratory Data Analysis).
+
+Data Upload & Analysis
+
+- Users upload Excel/CSV files.
+
+- The system automatically generates summary reports and visualizations.
+
+- Provides an instant overview of dataset structure, trends, and distributions.
+
+Natural Language Queries
+
+- Users can interact with the data using plain language questions:
+
+  - "What is the sales trend over the last 6 months?"
+  - "Which customer segment generates the most revenue?"
+
+- Answers are delivered in tables, charts, and text-based insights.
+
+Actionable Recommendations
+
+- Beyond raw numbers, the system provides meaningful insights.
+
+  - Example: "High churn detected in segment X – consider targeted discounts."
+
+- Output translates directly into business actions.
+
+User Segments
+
+- Non-Technical Users: Instant summaries and visuals for decision-making.
+
+- Technical Users: Quick data preview, EDA, pre-modeling analysis.
+
+Outcome
+
+- Dual-purpose usage: For both technical & non-technical users
+
+- Instant summaries, visuals, and recommendations
+
+- Saves time & accelerates decision-making
+
+- Supports a data-driven culture with AI-powered insights`,
+      imageUrl: '',
+      kaggleUrl: '',
+      tags: ['LLM', 'Dashboard', 'Data Analysis', 'Natural Language', 'Visualization', 'EDA', 'Actionable Recommendations'],
+      images: [
+        '/llm_dashboard/Ekran Görüntüsü (740).png',
+        '/llm_dashboard/Ekran Görüntüsü (741).png',
+        '/llm_dashboard/Ekran Görüntüsü (743).png',
+        '/llm_dashboard/Ekran Görüntüsü (745).png',
+        '/llm_dashboard/Ekran Görüntüsü (746).png'
+      ]
+    },
+    {
+      id: 3,
+      title: 'Brain MRI Tumor Detection with Transfer Learning',
+      description: `Goal: Explore transfer learning and deep learning methods on a Kaggle MRI dataset to build a high-accuracy, reproducible classification model.
+
+Focus
+
+- Experiment with transfer learning strategies
+
+- Apply augmentation & regularization to reduce overfitting
+
+- Boost accuracy with ensemble & calibration
+
+Methodology
+
+- Model: EfficientNetB3 (transfer learning)
+
+- Two-stage Training:
+
+- S1: Freeze backbone + Mixup augmentation + Label smoothing (0.10)
+
+- S2: Unfreeze last 100 layers + Label smoothing (0.00)
+
+- Ensemble: Two different seeds combined with soft-vote + bias-gate adjustment
+
+- Explainability: Grad-CAM visualizations of model attention regions
+
+Results
+
+- Achieved ~99.5% test accuracy
+
+- Reduced overfitting, improved generalization
+
+- Grad-CAM provided explainable predictions, highlighting decision areas`,
+      imageUrl: '',
+      kaggleUrl: 'https://www.kaggle.com/code/rausqen/brain-mri-tumor-detection-two-seed',
+      tags: ['Deep Learning', 'Transfer Learning', 'Computer Vision', 'EfficientNetB3', 'TensorFlow'],
+      images: [
+        '/brain_tumor/Ekran Görüntüsü (903).png',
+        '/brain_tumor/Ekran Görüntüsü (904).png',
+        '/brain_tumor/Ekran Görüntüsü (905).png',
+        '/brain_tumor/Ekran Görüntüsü (906).png',
+        '/brain_tumor/Ekran Görüntüsü (9061).png'
+      ]
+    },
+    {
+      id: 4,
+      title: 'CIFAR-10 CNN with Mixup & Label Smoothing',
+      description: `Goal: Demonstrate the impact of Mixup and Label Smoothing on generalization and robustness on CIFAR-10, building an end-to-end, reproducible CNN training pipeline.
+
+Approach
+
+- Architecture: 4-stage CNN (Conv-BN blocks with MaxPool & progressive Dropout), GlobalAvgPooling, Dense(512)+BN+Dropout, Softmax
+
+- Augmentation: Random flip/rotation/zoom/translation (light)
+
+- Mixup: alpha=0.2 integrated into the tf.data stream (NumPy-based)
+
+- Label Smoothing: ε=0.1 to regularize targets
+
+- Training: Adam + EarlyStopping + ReduceLROnPlateau + ModelCheckpoint
+
+- Evaluation: Val accuracy/loss curves; qualitative predictions on random test samples
+
+Outcome
+
+- Reduced overfitting and improved cross-class generalization with Mixup + Label Smoothing.
+
+- More stable training curves and consistent predictions on random samples.
+
+Highlights
+
+- Clean integration of Mixup + LS for stronger regularization
+
+- Efficient tf.data pipeline with augmentation + mixup
+
+- Reproducible training logs and sample predictions for qualitative checks`,
+      imageUrl: '',
+      kaggleUrl: 'https://www.kaggle.com/code/rausqen/cifar-10-cnn-with-mixup-label-smoothing',
+      tags: ['CNN', 'Computer Vision', 'Mixup', 'Label Smoothing', 'Data Augmentation'],
+      images: [
+        '/cifar-10/Ekran Görüntüsü (907).png',
+        '/cifar-10/Ekran Görüntüsü (908).png',
+        '/cifar-10/Ekran Görüntüsü (909).png',
+        '/cifar-10/Ekran Görüntüsü (910).png',
+        '/cifar-10/Ekran Görüntüsü (911).png',
+        '/cifar-10/Ekran Görüntüsü (912).png'
+      ]
+    },
+    {
+      id: 5,
+      title: 'CLTV Modeling with BG-NBD & Gamma-Gamma',
+      description: `Goal: Model repeat purchases to forecast 3-month revenue and create customer segments for data-driven marketing.
+
+Approach (End-to-End)
+
+Cleaning
+
+- Remove cancellations (Invoice "C*"), drop NAs, cap outliers in Quantity/Price, compute TotalPrice.
+
+Lifetimes Structure
+
+- recency (weeks), T (weeks), frequency (>1), monetary per purchase.
+
+- Purchase Frequency: BG-NBD → expected purchases in 1 week / 1 month / 3 months.
+
+- Monetary Value: Gamma-Gamma → expected average profit.
+
+- CLTV: Combined BG-NBD + Gamma-Gamma 3-month CLV with 1% monthly discount (freq="W").
+
+- Segmentation: CLV-based A–D quartiles with summary stats.
+
+Results (Sample Outputs)
+
+- Company-level expected transactions for 1w / 1m / 3m.
+
+- Per-customer fields: expected_purc_1w, expected_purc_1m, expected_purc_3m, expected_average_profit, CLV.
+
+- Segments: A (top value), B, C, D — report count / mean CLV / total CLV.
+
+Note: Forecasts are learned from historical data. For production, schedule periodic retraining and integrate campaign feedback for calibration.
+
+Marketing Actions
+
+- A Segment: Loyalty perks, VIP offers, early access.
+
+- B: Cross-sell & up-sell bundles.
+
+- C: Win-back emails, limited discounts.
+
+- D: Cost-aware, low-touch flows.`,
+      imageUrl: '',
+      kaggleUrl: 'https://www.kaggle.com/code/rausqen/cltv-modeling-with-bg-nbd-gamma-gamma',
+      tags: ['CLTV', 'BG-NBD', 'Gamma-Gamma', 'Marketing Analytics', 'Customer Analytics'],
+      images: [
+        '/gamma-gamma/Ekran Görüntüsü (923).png',
+        '/gamma-gamma/Ekran Görüntüsü (924).png',
+        '/gamma-gamma/Ekran Görüntüsü (925).png',
+        '/gamma-gamma/Ekran Görüntüsü (926).png',
+        '/gamma-gamma/Ekran Görüntüsü (927).png',
+        '/gamma-gamma/Ekran Görüntüsü (928).png',
+        '/gamma-gamma/Ekran Görüntüsü (929).png',
+        '/gamma-gamma/Ekran Görüntüsü (930).png'
+      ]
+    },
+    {
+      id: 6,
+      title: 'Amazon Reviews Sentiment-Based Ranking',
+      description: `Goal: Compute a fair product rating by accounting for recency, and rank top-20 trustworthy reviews for the product page.
+
+Problem
+
+- Naive averages are biased toward old reviews and vote brigading.
+
+- "Most helpful" lists can be gamed, hurting conversion and trust.
+
+Solution
+
+- Time-Based Weighted Average
+
+- Split reviews into 4 recency quartiles (day_diff) and apply weights (e.g., 28/26/24/22; tunable).
+
+- Review Reliability Ranking
+
+- From helpful_yes / helpful_no compute
+
+- Pos–Neg Difference
+
+- Average Rating
+
+- Wilson Lower Bound (WLB) → final ranking metric (lower bound of the CI).
+
+- Outputs
+
+- Revised average rating (recency-aware)
+
+- Top-20 reviews to display (sorted by WLB)
+
+Outcome & Impact
+
+- Ratings reflect recent customer experience → trust ↑
+
+- More manipulation-resistant review list → expected gains in conversion / fewer returns
+
+- A reusable Python pipeline for marketplace teams
+
+Notes / Limitations
+
+- WLB is conservative with small n; consider Bayesian Average Rating and NLP (sentiment/language detection) as next steps.
+
+- Weights should be calibrated via A/B tests per category.`,
+      imageUrl: '',
+      kaggleUrl: 'https://www.kaggle.com/code/rausqen/amazon-reviews-sentiment-based-ranking',
+      tags: ['Sentiment Analysis', 'Wilson Lower Bound', 'Amazon Reviews', 'Time-Weighted Rating'],
+      images: [
+        '/amazon/Ekran Görüntüsü (931).png',
+        '/amazon/Ekran Görüntüsü (932).png',
+        '/amazon/Ekran Görüntüsü (933).png',
+        '/amazon/Ekran Görüntüsü (934).png',
+        '/amazon/Ekran Görüntüsü (935).png',
+        '/amazon/Ekran Görüntüsü (936).png',
+        '/amazon/Ekran Görüntüsü (937).png',
+        '/amazon/Ekran Görüntüsü (938).png'
+      ]
+    }
+  ];
+
+  const openProjectModal = (project: Project, imageIndex: number = 0) => {
+    setSelectedProject(project);
+    setSelectedImageIndex(imageIndex);
+    setZoom(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  const closeProjectModal = () => {
+    setSelectedProject(null);
+    setZoom(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  // Zoom fonksiyonları
+  const zoomIn = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const newZoom = Math.min(zoom + 0.2, 5);
+    setZoom(newZoom);
+  };
+
+  const zoomOut = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    const newZoom = Math.max(zoom - 0.2, 0.2);
+    setZoom(newZoom);
+  };
+
+  const resetZoom = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    setZoom(1);
+    setPosition({ x: 0, y: 0 });
+  };
+
+  // Mouse wheel ile zoom
+  const handleWheel = (e: React.WheelEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    let newZoom = zoom + (e.deltaY < 0 ? 0.1 : -0.1);
+    newZoom = Math.max(0.2, Math.min(newZoom, 5));
+    setZoom(newZoom);
+  };
+
+  // Drag fonksiyonları
+  const handleMouseDown = (e: React.MouseEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+    setDragStart({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y
+    });
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const newX = e.clientX - dragStart.x;
+    const newY = e.clientY - dragStart.y;
+    setPosition({ x: newX, y: newY });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // ESC tuşu ile modal kapatılması
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && selectedProject) {
+        closeProjectModal();
+      }
+    };
+    
+    const handleGlobalWheel = (e: WheelEvent) => {
+      if (selectedProject) {
+        e.preventDefault();
+      }
+    };
+    
+    if (selectedProject) {
+      window.addEventListener('keydown', handleEscape);
+      window.addEventListener('wheel', handleGlobalWheel, { passive: false });
+      document.body.style.overflow = 'hidden';
+      return () => {
+        window.removeEventListener('keydown', handleEscape);
+        window.removeEventListener('wheel', handleGlobalWheel);
+        document.body.style.overflow = '';
+      };
+    }
+  }, [selectedProject]);
+
+  // Drag eventi için global mouse up
+  useEffect(() => {
+    if (isDragging) {
+      const handleGlobalMouseUp = () => setIsDragging(false);
+      window.addEventListener('mouseup', handleGlobalMouseUp);
+      return () => window.removeEventListener('mouseup', handleGlobalMouseUp);
+    }
+  }, [isDragging]);
+
+  const nextImage = () => {
+    if (selectedProject && selectedProject.images) {
+      setSelectedImageIndex((prev) => 
+        prev < selectedProject.images!.length - 1 ? prev + 1 : 0
+      );
+    }
+  };
+
+  const prevImage = () => {
+    if (selectedProject && selectedProject.images) {
+      setSelectedImageIndex((prev) => 
+        prev > 0 ? prev - 1 : selectedProject.images!.length - 1
+      );
+    }
+  };
+  return (
+    <div className="bg-black text-gray-300 antialiased relative min-h-screen">
+      {/* Background Image Container */}
+      <div 
+        className="absolute top-0 left-0 w-full h-full bg-cover bg-fixed"
+        style={{ 
+          backgroundImage: `url('/assets/background.jpg')`,
+          zIndex: 0,
+          backgroundPosition: '30% 50%',
+          backgroundSize: 'cover',
+          // Sadece Chrome'da blur uygula
+          filter: (!isSafari && /chrome/i.test(navigator.userAgent)) ? 'blur(12px)' : undefined
+        }}
+      />
+      {/* Safari'de arka planı gerçekten bulanıklaştıran overlay */}
+      {isSafari && (
+        <div
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            zIndex: 1,
+            background: 'rgba(0,0,0,0.01)', // neredeyse şeffaf, sadece blur için
+            WebkitBackdropFilter: 'blur(12px)',
+            backdropFilter: 'blur(12px)'
+          }}
+        />
+      )}
+
+      {/* Content */}
+      <div className="relative z-10 min-h-screen flex flex-col">
+        <Header />
+        {/* Mobilde menü başlıkları 2x2 grid */}
+  <div className="md:hidden w-full px-4 pt-24">
+          <div className="grid grid-cols-2 gap-2">
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='portfolio' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</button>
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='certificates' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</button>
+            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='education' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</button>
+          </div>
+        </div>
+        <div className="flex flex-1 w-full pt-20 pb-16">
+          {/* Sol cam efektli dikdörtgen */}
+          <div className="hidden md:flex flex-col items-start justify-start absolute top-20 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 6rem)'}}>
+            <div className="flex flex-col gap-4 w-full">
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
+              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'education' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</a>
+            </div>
+          </div>
+          {/* Sağ ana içerik */}
+          <section className="flex-1 flex flex-col items-center justify-start w-full md:ml-96 md:pl-8 mt-0">
+            {activeSection === 'portfolio' && (
+              <div className="w-full px-4">
+                <div className="grid grid-cols-1 gap-8">
+                  {portfolioProjects.map((project) => (
+                    <div 
+                      key={project.id} 
+                      id={`project-${project.id}`}
+                      className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none overflow-hidden transition-all duration-300 w-full"
+                    >
+                      <div className="p-12">
+                        <h3 className="text-white tracking-widest text-lg mb-4 uppercase cursor-default">{project.title}</h3>
+                        <div className="text-gray-300 text-sm mb-4 leading-relaxed whitespace-pre-line cursor-default">
+                          {project.description.split('\n').map((line, index) => {
+                            // Check if line is a section header (contains specific keywords and no dash)
+                            const isHeader = (
+                              (line.includes('Model Selection') || 
+                               line.includes('Dataset & RAG') || 
+                               line.includes('Model Upgrade') || 
+                               line.includes('Prompt Engineering') || 
+                               line.includes('Re-Ranking Layer') || 
+                               line.includes('This approach:') ||
+                               line.includes('Data Upload & Analysis') ||
+                               line.includes('Natural Language Queries') ||
+                               line.includes('Actionable Recommendations') ||
+                               line.includes('User Segments') ||
+                               line.includes('Focus') ||
+                               line.includes('Methodology') ||
+                               line.includes('Approach') ||
+                               line.includes('Highlights') ||
+                               line.includes('Cleaning') ||
+                               line.includes('Lifetimes Structure') ||
+                               line.includes('Problem') ||
+                               line.includes('Solution') ||
+                               line.includes('Notes / Limitations') ||
+                               line.includes('Results') ||
+                               line.includes('Marketing Actions') ||
+                               line.includes('Outcome')) &&
+                              !line.startsWith('-')
+                            );
+                            
+                            // Check if line is a subsection header (specific bullet points to highlight)
+                            const isSubHeader = (
+                              line.includes('- Time-Based Weighted Average') ||
+                              line.includes('- From helpful_yes / helpful_no compute') ||
+                              line.includes('- Outputs')
+                            );
+                            
+                            if (isHeader) {
+                              return (
+                                <div key={index} className="text-white font-light text-sm mt-4 mb-2 tracking-widest uppercase">
+                                  {line}
+                                </div>
+                              );
+                            }
+                            
+                            if (isSubHeader) {
+                              return (
+                                <div key={index} className="text-white font-medium text-sm mt-3 mb-1 tracking-wide">
+                                  {line}
+                                </div>
+                              );
+                            }
+                            
+                            return (
+                              <div key={index}>
+                                {line}
+                              </div>
+                            );
+                          })}
+                        </div>
+                        <div className="flex flex-wrap gap-2 mb-4">
+                          {project.tags.map((tag) => (
+                            <span key={tag} className="inline-block border border-gray-600 px-3 py-1 text-xs font-semibold text-gray-300 mr-2 mb-2 transition-all duration-300 hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400 cursor-default">
+                              {tag}
+                            </span>
+                          ))}
+                        </div>
+                        {/* Project Images */}
+                        {project.images && project.images.length > 0 && (
+                          <div className="grid grid-cols-6 gap-2">
+                            {project.images.map((image, index) => (
+                              <div 
+                                key={index} 
+                                className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-lg rounded-none overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                                onClick={(e) => {
+                                  e.stopPropagation();
+                                  openProjectModal(project, index);
+                                }}
+                              >
+                                <img
+                                  src={encodeURI(image)}
+                                  alt={`${project.title} - Image ${index + 1}`}
+                                  className="object-cover w-full h-20 bg-black"
+                                  loading="eager"
+                                  style={{ background: '#222' }}
+                                  onError={(e) => {
+                                    const target = e.target as HTMLImageElement;
+                                    target.style.display = 'none';
+                                    console.log(`Image failed to load: ${image}`);
+                                  }}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        )}
+                        
+                        {/* Kaggle Link Button */}
+                        {project.kaggleUrl && (
+                          <div className="mt-4">
+                            <a 
+                              href={project.kaggleUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="inline-block border border-gray-600 text-white text-sm font-semibold py-2 px-4 rounded-none transition-all duration-300 hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400"
+                            >
+                              View on Kaggle
+                            </a>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Project Modal */}
+                {selectedProject && (
+                  <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80" onClick={closeProjectModal}>
+                    <div 
+                      className="relative max-w-5xl w-full mx-6" 
+                      onClick={(e) => e.stopPropagation()}
+                      onWheel={handleWheel}
+                    >
+                      {/* Navigation Arrows */}
+                      {selectedProject.images && selectedProject.images.length > 1 && (
+                        <>
+                          <button 
+                            onClick={prevImage}
+                            className="absolute -left-12 top-1/2 -translate-y-1/2 text-white text-3xl z-50 hover:text-white/50 transition-colors"
+                          >
+                            &#x276E;
+                          </button>
+                          <button 
+                            onClick={nextImage}
+                            className="absolute -right-12 top-1/2 -translate-y-1/2 text-white text-3xl z-50 hover:text-white/50 transition-colors"
+                          >
+                            &#x276F;
+                          </button>
+                        </>
+                      )}
+                      
+                      {/* Image Display */}
+                      {selectedProject.images && selectedProject.images[selectedImageIndex] && (
+                        <img
+                          src={encodeURI(selectedProject.images[selectedImageIndex])}
+                          alt={`${selectedProject.title} - Image ${selectedImageIndex + 1}`}
+                          className="object-contain max-h-[80vh] w-[85vw] md:w-[75vw] mx-auto rounded-lg shadow-2xl cursor-move"
+                          style={{ 
+                            transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                            transition: isDragging ? 'none' : 'transform 0.15s'
+                          }}
+                          draggable={false}
+                          onMouseDown={handleMouseDown}
+                          onMouseMove={handleMouseMove}
+                          onMouseUp={handleMouseUp}
+                        />
+                      )}
+                    </div>
+                  </div>
+                )}
+              </div>
+            )}
+            {activeSection === 'certificates' && (
+              <div className="w-full flex flex-col items-center justify-start px-4">
+                <Certificates />
+              </div>
+            )}
+
+            {activeSection === 'education' && (
+              <div className="w-full flex flex-col items-start justify-start px-0" style={{marginBottom: '29rem'}}>
+                <div className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
+                  <div className="text-gray-300 text-lg leading-relaxed">
+                    <p className="mb-8">
+                      I am interested in artificial intelligence and data-driven problem solving, aiming to build a career that combines technical expertise and continuous growth. My academic journey from Electrical and Electronics Engineering to Statistics directed my focus toward data analysis and artificial intelligence, strengthening my analytical perspective.
+                    </p>
+                    <p>
+                      In my professional life, I follow a competitive and results-oriented approach. I value taking on new responsibilities and continuously strive for improvement with discipline, motivation, and a commitment to high standards.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
+          </section>
+        </div>
+        
+        {/* Contact Section - Below sidebar, spans full width, visible on all sections */}
+        <div className="w-full mt-32">
+          <Contact />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Portfolio;
