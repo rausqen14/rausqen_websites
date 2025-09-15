@@ -1,10 +1,11 @@
-  // Safari tespiti
-  const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
 import Certificates from './Certificates';
 import Contact from './Contact';
 import type { Project } from '../types';
+
+// Safari tespiti
+const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
 const Portfolio: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'portfolio' | 'certificates' | 'education'>('portfolio');
@@ -470,7 +471,7 @@ Notes / Limitations
       <div 
         className="absolute top-0 left-0 w-full h-full bg-cover bg-fixed"
         style={{ 
-          backgroundImage: `url(${BackgroundImage})`,
+          backgroundImage: `url('/assets/background.jpg')`,
           zIndex: 0,
           backgroundPosition: '30% 50%',
           backgroundSize: 'cover',
@@ -693,11 +694,7 @@ Notes / Limitations
                 <Certificates />
               </div>
             )}
-            {activeSection === 'ai-notes' && (
-              <div className="w-full flex flex-col items-center justify-start px-4">
-                <AiNotes />
-              </div>
-            )}
+
             {activeSection === 'education' && (
               <div className="w-full flex flex-col items-start justify-start px-0" style={{marginBottom: '29rem'}}>
                 <div className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
