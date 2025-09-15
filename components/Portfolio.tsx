@@ -471,7 +471,7 @@ Notes / Limitations
       <div 
         className="absolute top-0 left-0 w-full h-full bg-cover bg-fixed"
         style={{ 
-          backgroundImage: `url('/assets/background.jpg')`,
+          backgroundImage: `url('/background.jpg')`,
           zIndex: 0,
           backgroundPosition: '30% 50%',
           backgroundSize: 'cover',

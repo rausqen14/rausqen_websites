@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import Projects from './components/Projects';
 import Portfolio from './components/Portfolio';
 import Contact from './components/Contact';
-import BackgroundImage from './assets/background.jpg';
+
 import { Routes, Route } from 'react-router-dom';
 import { Analytics } from '@vercel/analytics/react';
 
@@ -15,7 +15,7 @@ const App: React.FC = () => {
       <div 
         className="absolute top-0 left-0 w-full h-full bg-cover bg-fixed"
         style={{ 
-          backgroundImage: `url(${BackgroundImage})`,
+          backgroundImage: `url('/background.jpg')`,
           zIndex: 0,
           backgroundPosition: '30% 50%'
         }}
