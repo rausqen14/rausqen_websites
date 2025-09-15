@@ -2,14 +2,12 @@
   const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 import React, { useState, useEffect } from 'react';
 import Header from './Header';
-import BackgroundImage from '../assets/background.jpg';
-import AiNotes from './AiNotes';
 import Certificates from './Certificates';
 import Contact from './Contact';
 import type { Project } from '../types';
 
 const Portfolio: React.FC = () => {
-  const [activeSection, setActiveSection] = useState<'portfolio' | 'certificates' | 'ai-notes' | 'education'>('portfolio');
+  const [activeSection, setActiveSection] = useState<'portfolio' | 'certificates' | 'education'>('portfolio');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
   const [zoom, setZoom] = useState(1);
@@ -505,7 +503,6 @@ Notes / Limitations
           <div className="grid grid-cols-2 gap-2">
             <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='portfolio' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</button>
             <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='certificates' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</button>
-            <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='ai-notes' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</button>
             <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 ${activeSection==='education' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</button>
           </div>
         </div>
@@ -515,7 +512,6 @@ Notes / Limitations
             <div className="flex flex-col gap-4 w-full">
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
-              <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'ai-notes' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('ai-notes')}>Research Notes</a>
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'education' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</a>
             </div>
           </div>
