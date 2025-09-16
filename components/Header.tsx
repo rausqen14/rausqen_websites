@@ -32,7 +32,7 @@ const Header: React.FC = () => {
   return (
     <header className={headerClass}>
       <div className="px-4 md:px-8 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-medium text-white tracking-widest uppercase">
+        <Link to="/" className="text-2xl font-medium text-white tracking-widest uppercase ml-8">
           Omer Faruk Koc
         </Link>
         <nav className="hidden md:flex space-x-0">

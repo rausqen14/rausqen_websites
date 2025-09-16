@@ -21,7 +21,7 @@ const App: React.FC = () => {
         }}
       >
         {/* Very light dark overlay */}
-        <div className="absolute top-0 left-0 w-full h-full bg-black/10"></div>
+        <div className="absolute top-0 left-0 w-full h-full bg-black/0"></div>
       </div>
 
       {/* Content */}
@@ -32,7 +32,6 @@ const App: React.FC = () => {
             <Route path="/" element={
               <>
                 <Hero />
-                <Projects />
                 <Contact />
               </>
             } />

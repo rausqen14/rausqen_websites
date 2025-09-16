@@ -349,6 +349,66 @@ Notes / Limitations
         '/amazon/Ekran Görüntüsü (937).png',
         '/amazon/Ekran Görüntüsü (938).png'
       ]
+    },
+    {
+      id: 7,
+      title: 'House Price Prediction with Deep Learning',
+      description: `Goal:
+Develop a deep learning regression model to predict house sale prices using the Ames Housing dataset, applying advanced preprocessing, feature engineering, and hyperparameter tuning.
+
+APPROACH
+
+Applied extensive preprocessing: missing value imputation, outlier clipping (1st & 99th percentile), log1p transformation.
+
+Feature engineering: created ratio-based and interaction features (e.g., TotalSqFeet, LotRatio, OverallGrade, PorchArea, Age/Restoration features).
+
+One-hot encoding for categorical features, MinMax scaling for numerical variables.
+
+Training/validation pipeline built with tf.data for efficient batching.
+
+Baseline model: 2 dense layers (16–32 units, ReLU, L2 regularization, BatchNorm).
+
+Hyperparameter optimization with KerasTuner RandomSearch: tuned depth, units, activation (ReLU/LeakyReLU/PReLU), dropout, and Adam β1/β2.
+
+RESULTS
+
+Baseline: RMSE ≈ $29,678, MAE ≈ $19,787
+
+Improved pipeline (log1p + outlier clipping + feature engineering): RMSE ≈ $24,883, MAE ≈ $16,356
+
+R² up to 0.99 for central percentiles; extreme luxury/rare houses remained most challenging.
+
+Error analysis identified high-value properties as main outlier sources; guided further feature adjustments.
+
+OUTCOME
+
+Reliable, scalable prediction pipeline for real estate valuation.
+
+Strong generalization with robust preprocessing + engineered features.
+
+Ready-to-use deep learning workflow: data cleaning → feature engineering → DNN regression → error analysis.`,
+      imageUrl: '',
+      kaggleUrl: 'https://www.kaggle.com/code/rausqen/house-price-prediction-with-deep-learning',
+      tags: ['Deep Learning', 'Regression', 'Feature Engineering', 'KerasTuner', 'Error Analysis', 'TensorFlow'],
+      images: [
+        '/house/Ekran Görüntüsü (1091).png',
+        '/house/Ekran Görüntüsü (1092).png',
+        '/house/Ekran Görüntüsü (1093).png',
+        '/house/Ekran Görüntüsü (1094).png',
+        '/house/Ekran Görüntüsü (1095).png',
+        '/house/Ekran Görüntüsü (1096).png',
+        '/house/Ekran Görüntüsü (1097).png',
+        '/house/Ekran Görüntüsü (1098).png',
+        '/house/Ekran Görüntüsü (1099).png',
+        '/house/Ekran Görüntüsü (1100).png',
+        '/house/Ekran Görüntüsü (1101).png',
+        '/house/Ekran Görüntüsü (1102).png',
+        '/house/Ekran Görüntüsü (1103).png',
+        '/house/Ekran Görüntüsü (1104).png',
+        '/house/Ekran Görüntüsü (1105).png',
+        '/house/Ekran Görüntüsü (1106).png',
+        '/house/Ekran Görüntüsü (1107).png'
+      ]
     }
   ];
 
@@ -489,12 +549,26 @@ Notes / Limitations
             width: '100%',
             height: '100%',
             zIndex: 1,
-            background: 'rgba(0,0,0,0.01)', // neredeyse şeffaf, sadece blur için
+            background: 'rgba(255,255,255,0.05)', // hafif aydınlatma efekti
             WebkitBackdropFilter: 'blur(12px)',
             backdropFilter: 'blur(12px)'
           }}
         />
       )}
+      
+      {/* Genel aydınlatma overlay'i */}
+      <div
+        style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          width: '100%',
+          height: '100%',
+          zIndex: 1,
+          background: 'rgba(255,255,255,0.03)', // hafif aydınlatma efekti
+          pointerEvents: 'none'
+        }}
+      />
 
       {/* Content */}
       <div className="relative z-10 min-h-screen flex flex-col">
@@ -509,7 +583,7 @@ Notes / Limitations
         </div>
         <div className="flex flex-1 w-full pt-20 pb-16">
           {/* Sol cam efektli dikdörtgen */}
-          <div className="hidden md:flex flex-col items-start justify-start absolute top-20 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 6rem)'}}>
+          <div className="hidden md:flex flex-col items-start justify-start fixed top-20 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 20rem)'}}>
             <div className="flex flex-col gap-4 w-full">
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-[background-color,border-color] duration-200 ease-out hover:bg-black/15 hover:backdrop-blur-[1px] hover:border-gray-400 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
