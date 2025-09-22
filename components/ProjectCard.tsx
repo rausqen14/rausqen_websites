@@ -37,7 +37,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             <p className="text-gray-300 text-xs mb-3 leading-relaxed flex-grow cursor-default">{project.description}</p>
             <button 
               onClick={handleViewProject}
-              className="mt-auto inline-block border border-gray-600 text-white text-xs font-semibold py-2 px-3 transition-all duration-300 text-center hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400"
+              className="mt-auto inline-block border border-gray-600 text-white text-sm font-medium py-2 px-3 transition-all duration-300 text-center hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400"
             >
                 View Project
             </button>
