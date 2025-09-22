@@ -3,6 +3,7 @@ import Header from './Header';
 import Certificates from './Certificates';
 import Contact from './Contact';
 import type { Project } from '../types';
+import backgroundImage from '../assets/background.jpg';
 
 // Safari tespiti
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
@@ -531,7 +532,7 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
       <div 
         className="absolute top-0 left-0 w-full h-full bg-cover bg-fixed"
         style={{ 
-          backgroundImage: `url('/background.jpg')`,
+          backgroundImage: `url(${backgroundImage})`,
           zIndex: 0,
           backgroundPosition: '30% 50%',
           backgroundSize: 'cover',
@@ -599,7 +600,7 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                     <div 
                       key={project.id} 
                       id={`project-${project.id}`}
-                      className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none overflow-hidden transition-all duration-300 w-full"
+                      className="bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none overflow-hidden transition-all duration-300 w-full"
                     >
                       <div className="p-12">
                         <h3 className="text-white tracking-widest text-lg mb-4 uppercase cursor-default">{project.title}</h3>
@@ -771,7 +772,7 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
 
             {activeSection === 'education' && (
               <div className="w-full flex flex-col items-start justify-start px-0" style={{marginBottom: '29rem'}}>
-                <div className="bg-black/50 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
+                <div className="bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] p-16 mb-8 w-full max-w-7xl ml-4">
                   <div className="text-gray-300 text-lg leading-relaxed">
                     <p className="mb-8">
                       I am interested in artificial intelligence and data-driven problem solving, aiming to build a career that combines technical expertise and continuous growth. My academic journey from Electrical and Electronics Engineering to Statistics directed my focus toward data analysis and artificial intelligence, strengthening my analytical perspective.
