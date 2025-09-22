@@ -29,7 +29,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         <div className="p-4 flex-grow flex flex-col">
             <div className="mb-3">
                 {project.tags.map(tag => (
-                    <span key={tag} className="inline-block border border-gray-600 px-2 py-1 text-xs font-semibold text-gray-300 mr-1 mb-1 transition-all duration-300 hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400 cursor-default">
+                    <span key={tag} className="inline-block border border-gray-600 px-2 py-1 text-xs font-semibold text-gray-300 mr-1 mb-1 transition-all duration-300 hover:border-white/60 cursor-default">
                         {tag}
                     </span>
                 ))}
@@ -37,7 +37,7 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
             <p className="text-gray-300 text-xs mb-3 leading-relaxed flex-grow cursor-default">{project.description}</p>
             <button 
               onClick={handleViewProject}
-              className="mt-auto inline-block border border-gray-600 text-white text-sm font-medium py-2 px-3 transition-all duration-300 text-center hover:bg-black/15 hover:backdrop-blur-[2px] hover:border-gray-400"
+              className="mt-auto inline-block border border-gray-600 text-white text-sm font-medium py-2 px-3 transition-all duration-300 text-center hover:border-white/60"
             >
                 View Project
             </button>
