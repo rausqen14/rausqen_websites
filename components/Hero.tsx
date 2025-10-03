@@ -21,6 +21,14 @@ const projectsData: Project[] = [
     tags: ['LLM', 'Dashboard', 'Data Analysis', 'Natural Language', 'Visualization', 'EDA', 'Actionable Recommendations'],
   },
   {
+    id: 8,
+    title: 'CAR PRICE PREDICTION WITH XGBOOST',
+    description: 'A machine learning web app that estimates vehicle market value based on brand, model, mileage, and age. Trained on 2M+ records with XGBoost for quick, reliable price estimation for buyers and sellers.',
+    imageUrl: '',
+    kaggleUrl: '',
+    tags: ['Machine Learning', 'XGBoost', 'Data Analysis'],
+  },
+  {
     id: 3,
     title: 'Brain MRI Tumor Detection with Transfer Learning',
     description: 'Built a high-accuracy brain tumor classification system using EfficientNetB3 with Mixup augmentation, label smoothing, and a 2-seed ensemble. Achieved ~99.5% test accuracy with explainable results.',

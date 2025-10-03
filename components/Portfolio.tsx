@@ -148,6 +148,52 @@ Outcome
       ]
     },
     {
+      id: 8,
+      title: 'CAR PRICE PREDICTION WITH XGBOOST',
+      description: `GOAL
+
+Build a machine learning–powered web application that estimates the market value of vehicles based on brand, model, mileage, age, and technical specifications. Designed for both car buyers and sellers who want a quick and reliable price estimation.
+
+
+DATASET & MODEL
+
+- Trained on 2 million+ vehicle records from the US automotive market.
+- Applied advanced preprocessing: missing value handling, outlier detection, feature encoding.
+- Built predictive models with XGBoost for high accuracy and scalability.
+
+
+USER FLOW
+
+- Users enter car details (brand, model, year/age, mileage, fuel type, power, torque, transmission).
+- The system instantly predicts an estimated price range (min–max).
+- Displays evaluation factors to show how each input contributes to the prediction.
+
+
+FEATURES
+
+- Real-time car price estimation.
+- User-friendly web interface with instant feedback.
+- Supports both new and used vehicles.
+- Transparent results: shows key factors affecting the estimation.
+
+
+OUTCOME
+
+- Provides accurate and explainable car price predictions.
+- Saves time for buyers and sellers in negotiations.
+- Demonstrates the power of machine learning models on large-scale structured datasets.
+- Supports data-driven decision-making in the automotive industry.`,
+      imageUrl: '',
+      kaggleUrl: '',
+      liveUrl: 'https://velora-black.vercel.app/',
+      tags: ['Machine Learning', 'XGBoost', 'Data Analysis'],
+      images: [
+        '/car_price/Ekran Görüntüsü (1309).png',
+        '/car_price/Ekran Görüntüsü (1312).png',
+        '/car_price/Ekran Görüntüsü (1313).png'
+      ]
+    },
+    {
       id: 3,
       title: 'Brain MRI Tumor Detection with Transfer Learning',
       description: `Goal: Explore transfer learning and deep learning methods on a Kaggle MRI dataset to build a high-accuracy, reproducible classification model.
@@ -631,7 +677,11 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                                line.includes('Notes / Limitations') ||
                                line.includes('Results') ||
                                line.includes('Marketing Actions') ||
-                               line.includes('Outcome')) &&
+                               line.includes('GOAL') ||
+                               line.includes('DATASET & MODEL') ||
+                               line.includes('USER FLOW') ||
+                               line.includes('FEATURES') ||
+                               line.includes('OUTCOME')) &&
                               !line.startsWith('-')
                             );
                             
@@ -701,9 +751,9 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                           </div>
                         )}
                         
-                        {/* Kaggle Link Button */}
-                        {project.kaggleUrl && (
-                          <div className="mt-4">
+                        <div className="flex space-x-4 mt-4">
+                          {/* Kaggle Link Button */}
+                          {project.kaggleUrl && (
                             <a 
                               href={project.kaggleUrl} 
                               target="_blank" 
@@ -712,8 +762,20 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                             >
                               View on Kaggle
                             </a>
-                          </div>
-                        )}
+                          )}
+                          
+                          {/* Live Project Link Button */}
+                          {project.liveUrl && (
+                            <a 
+                              href={project.liveUrl} 
+                              target="_blank" 
+                              rel="noopener noreferrer" 
+                              className="inline-block border border-gray-600 text-white text-sm font-medium py-2 px-4 rounded-none transition-all duration-300 hover:border-white/60"
+                            >
+                              View Project
+                            </a>
+                          )}
+                        </div>
                       </div>
                     </div>
                   ))}

@@ -1,13 +1,14 @@
 
-export interface Project {
+export type Project = {
   id: number;
   title: string;
   description: string;
   imageUrl: string;
   kaggleUrl: string;
+  liveUrl?: string; // Optional project URL
   tags: string[];
-  images?: string[]; // Portfolio projeler için ek görseller
-}
+  images?: string[];
+};
 
 export interface TimelineEvent {
   id: number;
