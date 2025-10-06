@@ -623,16 +623,16 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
         <Header />
 
         {/* Mobilde menü başlıkları 2x2 grid */}
-        <div className="md:hidden w-full px-4 pt-16">
+        <div className="md:hidden w-full px-4 pt-24">
           <div className="grid grid-cols-2 gap-2">
             <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 hover:border-white/60 ${activeSection==='portfolio' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</button>
             <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 hover:border-white/60 ${activeSection==='certificates' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</button>
             <button className={`w-full border border-white/10 text-white font-light py-3 rounded-sm uppercase tracking-widest text-xs transition-all duration-300 hover:border-white/60 ${activeSection==='education' ? 'bg-black/30 border-white/20' : ''}`} onClick={() => setActiveSection('education')}>ABOUT ME</button>
           </div>
         </div>
-        <div className="flex flex-1 w-full pt-12 pb-16">
+        <div className="flex flex-1 w-full pt-20 pb-16">
           {/* Sol cam efektli dikdörtgen */}
-          <div className="hidden md:flex flex-col items-start justify-start fixed top-12 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 18rem)'}}>
+          <div className="hidden md:flex flex-col items-start justify-start fixed top-20 left-0 w-96 min-w-[320px] p-8 bg-black/30 border border-white/10 shadow-lg backdrop-blur-[2px] rounded-none" style={{height: 'calc(100vh - 25rem)'}}>
             <div className="flex flex-col gap-4 w-full">
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 ease-out hover:border-white/60 text-left ${activeSection === 'portfolio' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('portfolio')}>Projects</a>
               <a href="#" className={`w-full border border-transparent text-white font-light py-3 pl-2 rounded-sm uppercase tracking-widest text-sm transition-all duration-300 ease-out hover:border-white/60 text-left ${activeSection === 'certificates' ? 'bg-black/30 border-white/15' : ''}`} onClick={() => setActiveSection('certificates')}>Certificates</a>
@@ -852,7 +852,7 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
         </div>
         
         {/* Contact Section - Below sidebar, spans full width, visible on all sections */}
-        <div className="w-full mt-32">
+        <div className="w-full mt-48">
           <Contact />
         </div>
       </div>
