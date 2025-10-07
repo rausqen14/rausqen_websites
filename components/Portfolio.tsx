@@ -140,7 +140,7 @@ Outcome
       kaggleUrl: '',
       tags: ['LLM', 'Dashboard', 'Data Analysis', 'Natural Language', 'Visualization', 'EDA', 'Actionable Recommendations'],
       images: [
-        '/llm_dashboard/Desktop 2025.10.07 - 20.22.49.05.mp4',
+        '/llm_dashboard/Adsız video ‐ Clipchamp ile yapıldı.mp4',
         '/llm_dashboard/Ekran Görüntüsü (1345).png',
         '/llm_dashboard/Ekran Görüntüsü (1387).png',
         '/llm_dashboard/Ekran Görüntüsü (1388).png',
