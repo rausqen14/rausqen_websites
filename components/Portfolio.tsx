@@ -140,11 +140,15 @@ Outcome
       kaggleUrl: '',
       tags: ['LLM', 'Dashboard', 'Data Analysis', 'Natural Language', 'Visualization', 'EDA', 'Actionable Recommendations'],
       images: [
-        '/llm_dashboard/Ekran Görüntüsü (740).png',
-        '/llm_dashboard/Ekran Görüntüsü (741).png',
-        '/llm_dashboard/Ekran Görüntüsü (743).png',
-        '/llm_dashboard/Ekran Görüntüsü (745).png',
-        '/llm_dashboard/Ekran Görüntüsü (746).png'
+        '/llm_dashboard/Desktop 2025.10.07 - 20.22.49.05.mp4',
+        '/llm_dashboard/Ekran Görüntüsü (1345).png',
+        '/llm_dashboard/Ekran Görüntüsü (1387).png',
+        '/llm_dashboard/Ekran Görüntüsü (1388).png',
+        '/llm_dashboard/Ekran Görüntüsü (1389).png',
+        '/llm_dashboard/Ekran Görüntüsü (1391).png',
+        '/llm_dashboard/Ekran Görüntüsü (1392).png',
+        '/llm_dashboard/Ekran Görüntüsü (1393).png',
+        '/llm_dashboard/Ekran Görüntüsü (1394).png'
       ]
     },
     {
@@ -188,6 +192,7 @@ OUTCOME
       liveUrl: 'https://velora-black.vercel.app/',
       tags: ['Machine Learning', 'XGBoost', 'Data Analysis'],
       images: [
+        '/car_price/Desktop 2025.10.07 - 20.50.56.08.mp4',
         '/car_price/Ekran Görüntüsü (1309).png',
         '/car_price/Ekran Görüntüsü (1312).png',
         '/car_price/Ekran Görüntüsü (1313).png'
@@ -725,29 +730,49 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                         {/* Project Images */}
                         {project.images && project.images.length > 0 && (
                           <div className="grid grid-cols-6 gap-2">
-                            {project.images.map((image, index) => (
-                              <div 
-                                key={index} 
-                                className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-lg rounded-none overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
-                                onClick={(e) => {
-                                  e.stopPropagation();
-                                  openProjectModal(project, index);
-                                }}
-                              >
-                                <img
-                                  src={encodeURI(image)}
-                                  alt={`${project.title} - Image ${index + 1}`}
-                                  className="object-cover w-full h-20 bg-black"
-                                  loading="eager"
-                                  style={{ background: '#222' }}
-                                  onError={(e) => {
-                                    const target = e.target as HTMLImageElement;
-                                    target.style.display = 'none';
-                                    console.log(`Image failed to load: ${image}`);
+                            {project.images.map((image, index) => {
+                              const firstImageThumbnail = project.images.find(item => !item.endsWith('.mp4'));
+                              return (
+                                <div 
+                                  key={index} 
+                                  className="bg-white/2 border border-white/10 shadow-lg backdrop-blur-lg rounded-none overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-2 hover:shadow-xl"
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    openProjectModal(project, index);
                                   }}
-                                />
-                              </div>
-                            ))}
+                                >
+                                  {image.endsWith('.mp4') ? (
+                                    <div className="relative w-full h-20 bg-black flex items-center justify-center text-white text-sm font-medium">
+                                      {firstImageThumbnail ? (
+                                        <img
+                                          src={encodeURI(firstImageThumbnail)}
+                                          alt={`${project.title} - Video Thumbnail`}
+                                          className="object-cover w-full h-full absolute inset-0 opacity-50"
+                                          loading="eager"
+                                          style={{ background: '#222' }}
+                                        />
+                                      ) : (
+                                        <div className="absolute inset-0 bg-black/50"></div>
+                                      )}
+                                      <span className="relative z-10 text-4xl opacity-75">▶</span>
+                                    </div>
+                                  ) : (
+                                    <img
+                                      src={encodeURI(image)}
+                                      alt={`${project.title} - Image ${index + 1}`}
+                                      className="object-cover w-full h-20 bg-black"
+                                      loading="eager"
+                                      style={{ background: '#222' }}
+                                      onError={(e) => {
+                                        const target = e.target as HTMLImageElement;
+                                        target.style.display = 'none';
+                                        console.log(`Image failed to load: ${image}`);
+                                      }}
+                                    />
+                                  )}
+                                </div>
+                              );
+                            })}
                           </div>
                         )}
                         
@@ -807,21 +832,41 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                         </>
                       )}
                       
-                      {/* Image Display */}
+                      {/* Media Display */}
                       {selectedProject.images && selectedProject.images[selectedImageIndex] && (
-                        <img
-                          src={encodeURI(selectedProject.images[selectedImageIndex])}
-                          alt={`${selectedProject.title} - Image ${selectedImageIndex + 1}`}
-                          className="object-contain max-h-[80vh] w-[85vw] md:w-[75vw] mx-auto rounded-lg shadow-2xl cursor-move"
-                          style={{ 
-                            transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
-                            transition: isDragging ? 'none' : 'transform 0.15s'
-                          }}
-                          draggable={false}
-                          onMouseDown={handleMouseDown}
-                          onMouseMove={handleMouseMove}
-                          onMouseUp={handleMouseUp}
-                        />
+                        <>
+                          {selectedProject.images[selectedImageIndex].endsWith('.mp4') ? (
+                            <video
+                              src={encodeURI(selectedProject.images[selectedImageIndex])}
+                              controls
+                              preload="metadata"
+                              className="object-contain max-h-[80vh] w-[85vw] md:w-[75vw] mx-auto rounded-lg shadow-2xl"
+                              style={{ 
+                                transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                                transition: isDragging ? 'none' : 'transform 0.15s'
+                              }}
+                              onMouseDown={handleMouseDown}
+                              onMouseMove={handleMouseMove}
+                              onMouseUp={handleMouseUp}
+                            >
+                              Your browser does not support the video tag.
+                            </video>
+                          ) : (
+                            <img
+                              src={encodeURI(selectedProject.images[selectedImageIndex])}
+                              alt={`${selectedProject.title} - Image ${selectedImageIndex + 1}`}
+                              className="object-contain max-h-[80vh] w-[85vw] md:w-[75vw] mx-auto rounded-lg shadow-2xl cursor-move"
+                              style={{ 
+                                transform: `translate(${position.x}px, ${position.y}px) scale(${zoom})`,
+                                transition: isDragging ? 'none' : 'transform 0.15s'
+                              }}
+                              draggable={false}
+                              onMouseDown={handleMouseDown}
+                              onMouseMove={handleMouseMove}
+                              onMouseUp={handleMouseUp}
+                            />
+                          )}
+                        </>
                       )}
                     </div>
                   </div>
