@@ -8,3 +8,6 @@ build/
 .vscode/
 .vercel/
 
+# Large video files (too big for GitHub)
+public/llm_dashboard/Desktop 2025.10.07 - 20.22.49.05.mp4
+public/car_price/Desktop 2025.10.07 - 20.50.56.08.mp4
