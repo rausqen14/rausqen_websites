@@ -81,14 +81,12 @@ Outcome
       kaggleUrl: '',
       tags: ['RAG', 'OCR', 'Semantic Search', 'Prompt Engineering', 'Fine-Tuning', 'ChromaDB', 'LlamaIndex', 'PyTorch', 'Google Cloud API Integration'],
       images: [
-        '/legal_ai/Ekran Görüntüsü (894).png',
-        '/legal_ai/Ekran Görüntüsü (895).png',
-        '/legal_ai/Ekran Görüntüsü (896).png',
-        '/legal_ai/Ekran Görüntüsü (897).png',
-        '/legal_ai/Ekran Görüntüsü (898).png',
-        '/legal_ai/Ekran Görüntüsü (899).png',
-        '/legal_ai/Ekran Görüntüsü (900).png',
-        '/legal_ai/Ekran Görüntüsü (901).png'
+        '/legal_ai/Ekran Görüntüsü (1407).png',
+        '/legal_ai/Ekran Görüntüsü (1408).png',
+        '/legal_ai/Ekran Görüntüsü (1409).png',
+        '/legal_ai/Ekran Görüntüsü (1410).png',
+        '/legal_ai/Ekran Görüntüsü (1411).png',
+        '/legal_ai/Ekran Görüntüsü (1412).png'
       ]
     },
     {
