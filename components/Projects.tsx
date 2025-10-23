@@ -5,6 +5,15 @@ import ProjectCard from './ProjectCard';
 
 const projectsData: Project[] = [
   {
+    id: 9,
+    title: 'AI-POWERED EXAM EVALUATION SYSTEM WITH AGENTIC ARCHITECTURE',
+    description: 'Goal: Develop an agent-based AI system that automatically evaluates student exam sheets, assigns scores, and provides transparent, explainable feedback. The system is designed to support schools, teachers, and EdTech platforms by offering a scalable, modular, and explainable grading pipeline.\n\n\n\nARCHITECTURE & AGENTS\n\n- File Agent – Processes PDF answer sheets and keys, extracts text via OCR.\n\n- Rubric Agent – Extracts and standardizes scoring rubrics from the answer key.\n\n- Scoring Agent – Evaluates student answers with GPT-4o and structured reasoning prompts.\n\n- Feedback Agent – Generates human-like explanations and improvement suggestions.\n\n- Conversational Agent – Handles follow-up questions like “Why did I get this score?”.\n\n- Reporting Agent – Summarizes and formats the results into per-student reports.\n\n- Coordinator Agent – Orchestrates the workflow and manages agent communication.\n\nFEATURES\n\n- Fully automated 7-agent orchestration with modular design.\n\n- GPT-4o-powered deep evaluation and explainable scoring pipeline.\n\n- Native support for Turkish language, free-form answers, and rubric-based evaluation.\n\n- Real-time streaming of results via Server-Sent Events (SSE).\n\n- FastAPI + Next.js full-stack architecture, deployed on Vercel + Render.\n\n- Prompt engineering tailored for educational contexts.\n\nOUTCOMES\n\n- Significantly reduces manual grading time and improves consistency.\n\n- Supports evaluation of dozens of exams simultaneously.\n\n- Enables students to understand their scores through interactive explanations.\n\n- Demonstrates how agentic AI architectures can transform traditional assessment workflows.',
+    imageUrl: '',
+    kaggleUrl: '',
+    liveUrl: 'https://github.com/rausqen14/sinav_degerlendirici',
+    tags: ['Agentic Architecture', 'Multi-Agent System', 'AI Assessment', 'GPT-4o', 'Prompt Engineering', 'OCR', 'SSE', 'EdTech', 'FastAPI', 'Next.js'],
+  },
+  {
     id: 1,
     title: 'Legal AI Assistant',
     description: 'Processes thousands of legal documents with OCR + semantic chunking and integrates them into a RAG pipeline. Provides instant answers to user queries with relevant laws and case precedents; pipeline auto-updates when new documents are added.',

@@ -20,6 +20,57 @@ const Portfolio: React.FC = () => {
 
   const portfolioProjects: Project[] = [
     {
+      id: 9,
+      title: 'AI-POWERED EXAM EVALUATION SYSTEM WITH AGENTIC ARCHITECTURE',
+description: `Goal: Develop an agent-based AI system that automatically evaluates student exam sheets, assigns scores, and provides transparent, explainable feedback. The system is designed to support schools, teachers, and EdTech platforms by offering a scalable, modular, and explainable grading pipeline.
+
+ARCHITECTURE & AGENTS
+
+- File Agent – Processes PDF answer sheets and keys, extracts text via OCR.
+
+- Rubric Agent – Extracts and standardizes scoring rubrics from the answer key.
+
+- Scoring Agent – Evaluates student answers with GPT-4o and structured reasoning prompts.
+
+- Feedback Agent – Generates human-like explanations and improvement suggestions.
+
+- Conversational Agent – Handles follow-up questions like “Why did I get this score?”.
+
+- Reporting Agent – Summarizes and formats the results into per-student reports.
+
+- Coordinator Agent – Orchestrates the workflow and manages agent communication.
+
+FEATURES
+
+- Fully automated 7-agent orchestration with modular design.
+
+- GPT-4o-powered deep evaluation and explainable scoring pipeline.
+
+- Native support for Turkish language, free-form answers, and rubric-based evaluation.
+
+- Real-time streaming of results via Server-Sent Events (SSE).
+
+- FastAPI + Next.js full-stack architecture, deployed on Vercel + Render.
+
+- Prompt engineering tailored for educational contexts.
+
+OUTCOMES
+
+- Significantly reduces manual grading time and improves consistency.
+
+- Supports evaluation of dozens of exams simultaneously.
+
+- Enables students to understand their scores through interactive explanations.
+
+- Demonstrates how agentic AI architectures can transform traditional assessment workflows.`,
+      imageUrl: '',
+      kaggleUrl: '',
+      githubUrl: 'https://github.com/rausqen14/sinav_degerlendirici',
+      liveUrl: 'https://github.com/rausqen14/sinav_degerlendirici',
+      tags: ['Agentic Architecture', 'Multi-Agent System', 'Prompt Engineering', 'Explainable AI', 'OCR Processing', 'Full-Stack AI'],
+      images: []
+    },
+    {
       id: 1,
       title: 'Legal AI Assistant',
       description: `Goal: Develop an AI-powered legal assistant capable of processing hundreds of thousands of legal documents and delivering accurate, professional, and source-backed answers instantly.
@@ -404,40 +455,44 @@ Notes / Limitations
     {
       id: 7,
       title: 'House Price Prediction with Deep Learning',
-      description: `Goal:
+      description: `GOAL
+
 Develop a deep learning regression model to predict house sale prices using the Ames Housing dataset, applying advanced preprocessing, feature engineering, and hyperparameter tuning.
+
 
 APPROACH
 
-Applied extensive preprocessing: missing value imputation, outlier clipping (1st & 99th percentile), log1p transformation.
+- Applied extensive preprocessing: missing value imputation, outlier clipping (1st & 99th percentile), log1p transformation.
 
-Feature engineering: created ratio-based and interaction features (e.g., TotalSqFeet, LotRatio, OverallGrade, PorchArea, Age/Restoration features).
+- Feature engineering: created ratio-based and interaction features (e.g., TotalSqFeet, LotRatio, OverallGrade, PorchArea, Age/Restoration features).
 
-One-hot encoding for categorical features, MinMax scaling for numerical variables.
+- One-hot encoding for categorical features, MinMax scaling for numerical variables.
 
-Training/validation pipeline built with tf.data for efficient batching.
+- Training/validation pipeline built with tf.data for efficient batching.
 
-Baseline model: 2 dense layers (16–32 units, ReLU, L2 regularization, BatchNorm).
+- Baseline model: 2 dense layers (16–32 units, ReLU, L2 regularization, BatchNorm).
 
-Hyperparameter optimization with KerasTuner RandomSearch: tuned depth, units, activation (ReLU/LeakyReLU/PReLU), dropout, and Adam β1/β2.
+- Hyperparameter optimization with KerasTuner RandomSearch: tuned depth, units, activation (ReLU/LeakyReLU/PReLU), dropout, and Adam β1/β2.
+
 
 RESULTS
 
-Baseline: RMSE ≈ $29,678, MAE ≈ $19,787
+- Baseline: RMSE ≈ $29,678, MAE ≈ $19,787
 
-Improved pipeline (log1p + outlier clipping + feature engineering): RMSE ≈ $24,883, MAE ≈ $16,356
+- Improved pipeline (log1p + outlier clipping + feature engineering): RMSE ≈ $24,883, MAE ≈ $16,356
 
-R² up to 0.99 for central percentiles; extreme luxury/rare houses remained most challenging.
+- R² up to 0.99 for central percentiles; extreme luxury/rare houses remained most challenging.
 
-Error analysis identified high-value properties as main outlier sources; guided further feature adjustments.
+- Error analysis identified high-value properties as main outlier sources; guided further feature adjustments.
+
 
 OUTCOME
 
-Reliable, scalable prediction pipeline for real estate valuation.
+- Reliable, scalable prediction pipeline for real estate valuation.
 
-Strong generalization with robust preprocessing + engineered features.
+- Strong generalization with robust preprocessing + engineered features.
 
-Ready-to-use deep learning workflow: data cleaning → feature engineering → DNN regression → error analysis.`,
+- Ready-to-use deep learning workflow: data cleaning → feature engineering → DNN regression → error analysis.`,
       imageUrl: '',
       kaggleUrl: 'https://www.kaggle.com/code/rausqen/house-price-prediction-with-deep-learning',
       tags: ['Deep Learning', 'Regression', 'Feature Engineering', 'KerasTuner', 'Error Analysis', 'TensorFlow'],
@@ -681,10 +736,13 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                                line.includes('Results') ||
                                line.includes('Marketing Actions') ||
                                line.includes('GOAL') ||
+                               line.includes('ARCHITECTURE & AGENTS') ||
                                line.includes('DATASET & MODEL') ||
                                line.includes('USER FLOW') ||
                                line.includes('FEATURES') ||
-                               line.includes('OUTCOME')) &&
+                               line.includes('OUTCOME') ||
+                               line.includes('APPROACH') ||
+                               line.includes('RESULTS')) &&
                               !line.startsWith('-')
                             );
                             
@@ -696,8 +754,10 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                             );
                             
                             if (isHeader) {
+                              // ARCHITECTURE & AGENTS başlığına özel bir üst margin ekle
+                              const marginTopClass = line.includes('ARCHITECTURE & AGENTS') ? 'mt-6' : 'mt-4';
                               return (
-                                <div key={index} className="text-white font-light text-sm mt-4 mb-2 tracking-widest uppercase">
+                                <div key={index} className={`text-white font-light text-sm mb-2 tracking-widest uppercase ${marginTopClass}`}>
                                   {line}
                                 </div>
                               );
@@ -724,9 +784,14 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                               {tag}
                             </span>
                           ))}
+                          {project.kaggleUrl && (
+                            <a href={project.kaggleUrl} target="_blank" rel="noopener noreferrer" className="inline-block bg-white/5 border border-white/20 px-4 py-2 text-xs font-semibold text-white mr-2 mb-2 transition-all duration-300 hover:bg-white/10 hover:border-white/40">
+                              KAGGLE
+                            </a>
+                          )}
                         </div>
-                        {/* Project Images */}
-                        {project.images && project.images.length > 0 && (
+                        {/* Project Images or View Project Button */}
+                        {(project.images && project.images.length > 0) ? (
                           <div className="grid grid-cols-6 gap-2">
                             {project.images.map((image, index) => {
                               const firstImageThumbnail = project.images.find(item => !item.endsWith('.mp4'));
@@ -752,27 +817,22 @@ Ready-to-use deep learning workflow: data cleaning → feature engineering → D
                                       ) : (
                                         <div className="absolute inset-0 bg-black/50"></div>
                                       )}
-                                      <span className="relative z-10 text-4xl opacity-75">▶</span>
+                                      <svg className="relative w-8 h-8 text-white/80" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
                                   ) : (
                                     <img
                                       src={encodeURI(image)}
-                                      alt={`${project.title} - Image ${index + 1}`}
-                                      className="object-cover w-full h-20 bg-black"
+                                      alt={`${project.title} - ${index + 1}`}
+                                      className="object-cover w-full h-20"
                                       loading="eager"
                                       style={{ background: '#222' }}
-                                      onError={(e) => {
-                                        const target = e.target as HTMLImageElement;
-                                        target.style.display = 'none';
-                                        console.log(`Image failed to load: ${image}`);
-                                      }}
                                     />
                                   )}
                                 </div>
                               );
                             })}
                           </div>
-                        )}
+                        ) : null}
                         
                         <div className="flex space-x-4 mt-4">
                           {/* Kaggle Link Button */}

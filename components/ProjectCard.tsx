@@ -14,9 +14,9 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
         // Calculate the exact position considering header height
         const headerHeight = 80; // Approximate header height
         const elementTop = projectElement.offsetTop - headerHeight;
-        window.scrollTo({ top: elementTop, behavior: 'instant' });
+        window.scrollTo({ top: elementTop, behavior: 'smooth' });
       }
-    }, 100);
+    }, 300);
   };
 
   return (
@@ -35,12 +35,23 @@ const ProjectCard: React.FC<{ project: Project }> = ({ project }) => {
                 ))}
             </div>
             <p className="text-gray-300 text-xs mb-3 leading-relaxed flex-grow cursor-default">{project.description}</p>
-            <button 
-              onClick={handleViewProject}
-              className="mt-auto inline-block border border-gray-600 text-white text-sm font-medium py-2 px-3 transition-all duration-300 text-center hover:border-white/60"
-            >
-                View Project
-            </button>
+            {project.id === 9 ? null : project.liveUrl ? (
+              <a 
+                href={project.liveUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="mt-auto inline-block border border-gray-600 text-white text-sm font-medium py-2 px-3 transition-all duration-300 text-center hover:border-white/60"
+              >
+                  View Project
+              </a>
+            ) : (
+              <button 
+                onClick={handleViewProject}
+                className="mt-auto inline-block border border-gray-600 text-white text-sm font-medium py-2 px-3 transition-all duration-300 text-center hover:border-white/60"
+              >
+                  View Project
+              </button>
+            )}
         </div>
     </div>
   );

@@ -6,6 +6,7 @@ export type Project = {
   imageUrl: string;
   kaggleUrl: string;
   liveUrl?: string; // Optional project URL
+  githubUrl?: string; // Optional GitHub URL
   tags: string[];
   images?: string[];
 };
