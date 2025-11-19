@@ -16,10 +16,10 @@ const projectsData: Project[] = [
   {
     id: 1,
     title: 'Legal AI Assistant',
-    description: 'Processes thousands of legal documents with OCR + semantic chunking and integrates them into a RAG pipeline. Provides instant answers to user queries with relevant laws and case precedents; pipeline auto-updates when new documents are added.',
+    description: 'Multi-stage Agentic RAG system with 8-agent pipeline for Turkish legal queries. Features modular architecture with domain classification, multi-law database selection, article retrieval, Yargıtay case law research, and intelligent follow-up handling. Includes 3 decision flags for flow control, hash-based conversation tracking, and context-aware answer synthesis.',
     imageUrl: '',
     kaggleUrl: '',
-    tags: ['RAG', 'OCR', 'Semantic Search', 'Prompt Engineering', 'Fine-Tuning', 'ChromaDB', 'LlamaIndex', 'PyTorch', 'Google Cloud API Integration'],
+    tags: ['RAG', 'Agentic Systems', 'Multi-Agent Architecture', 'Prompt Engineering', 'LangChain', 'GenerativeAI', 'ChromaDB', 'PyTorch'],
   },
   {
     id: 2,

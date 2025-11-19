@@ -9,6 +9,50 @@ import backgroundImage from '../assets/background.jpg';
 // Safari tespiti
 const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
 
+const SECTION_HEADER_KEYWORDS = [
+  'Model Selection',
+  'Dataset & RAG',
+  'Model Upgrade',
+  'Prompt Engineering',
+  'Re-Ranking Layer',
+  'This approach:',
+  'Data Upload & Analysis',
+  'Natural Language Queries',
+  'Actionable Recommendations',
+  'User Segments',
+  'Focus',
+  'Methodology',
+  'Approach',
+  'Highlights',
+  'Cleaning',
+  'Lifetimes Structure',
+  'Problem',
+  'Solution',
+  'Notes / Limitations',
+  'Results',
+  'Marketing Actions',
+  'GOAL',
+  'ARCHITECTURE & AGENTS',
+  'SYSTEM ARCHITECTURE',
+  'DATASET & MODEL',
+  'USER FLOW',
+  'FEATURES',
+  'OUTCOME',
+  'OUTCOMES',
+  'INITIAL QUESTION PIPELINE',
+  'FOLLOW-UP PIPELINE',
+  'KEY MECHANISMS',
+  'CAPABILITIES',
+  'APPROACH',
+  'RESULTS'
+];
+
+const SUB_HEADER_KEYWORDS = [
+  '- Time-Based Weighted Average',
+  '- From helpful_yes / helpful_no compute',
+  '- Outputs'
+];
+
 const Portfolio: React.FC = () => {
   const [activeSection, setActiveSection] = useState<'portfolio' | 'certificates' | 'education'>('portfolio');
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
@@ -73,71 +117,96 @@ OUTCOMES
     {
       id: 1,
       title: 'Legal AI Assistant',
-      description: `Goal: Develop an AI-powered legal assistant capable of processing hundreds of thousands of legal documents and delivering accurate, professional, and source-backed answers instantly.
+      description: `Goal: Develop a multi-stage Agentic RAG system capable of interpreting Turkish legal queries, retrieving relevant legislation and Yargıtay case law, and generating context-aware, reference-backed legal answers through coordinated multi-agent reasoning.
 
-Model Selection & Initial Training
+SYSTEM ARCHITECTURE
 
-- Started with Meta Llama 3 8B Instruct (GGUF Q6_K), trained locally.
+- Modular 8-agent pipeline handling initial and follow-up queries separately
 
-- Fine-tuned with legal datasets collected online.
+- 3 decision flags regulating domain validation, relevance tracking, and topic resets
 
-- The model answered simple questions correctly but struggled with complex reasoning.
+- Deterministic flow control: domain detection → database selection → article retrieval → case law research → answer synthesis
 
-Dataset & RAG Pipeline
+- Robust follow-up logic with context retention and topic-shift detection
 
-- Integrated Supreme Court (Yargıtay) decisions into the system.
 
-- Built a vector database with 300K+ decisions → 2.4M chunks.
 
-- 22 hours of processing time required.
 
-- Still, the model's reasoning remained insufficient for complex queries.
 
-Model Upgrade & Reasoning Boost
 
-- Switched to Gemini 1.5 Flash.
 
-- Achieved a significant improvement in reasoning capability.
+INITIAL QUESTION PIPELINE (Ajan1–Ajan5)
 
-Prompt Engineering
+- Ajan1 | Domain Classification: Legal vs non-legal question detection
 
-- Gemini's answers lacked a formal, legal tone.
+- Ajan2 | Database Selector: Targets correct legal corpus (TCK, TBK, İş Kanunu, TTK, HMK, VUK, etc.)
 
-- Applied prompt engineering to enforce professional and authoritative legal language.
+- Ajan3 | Article Retriever: Embedding-based semantic search over vectorized law databases
 
-Re-Ranking Layer
+- Ajan4 | Case Law Researcher: Fetches and summarizes relevant Yargıtay decisions
 
-- Added a re-ranking mechanism to the RAG pipeline.
+- Ajan5 | Answer Synthesizer: Merges legislation + case law into structured output (summary, explanation, rights)
 
-- The system retrieved the top 15 most relevant documents and used only those above a set threshold.
 
-This approach:
 
-- Reduced hallucinations
 
-- Improved consistency
 
-- Enhanced overall answer quality
 
-Outcome
 
-- Instant, source-backed answers (laws & precedents cited)
 
-- Improved reasoning & professional legal tone
 
-- Scalable system: 300K+ documents, 2.4M chunks, 22h indexing
+FOLLOW-UP PIPELINE (Ajan6–Ajan8)
 
-- A reliable Legal AI Assistant built on RAG + Re-ranking + Prompt Engineering`,
+- Ajan6 | Relevance Checker: Determines whether the new message aligns with ongoing context
+
+- Ajan7 | Follow-Up Responder: Generates context-consistent follow-up answers
+
+- Ajan8 | Topic/Domain Validator: Detects topic shifts; triggers reset or re-routing logic
+
+
+
+
+
+
+
+KEY MECHANISMS
+
+- Flag1 (Legal Check): Determines entry into main pipeline
+
+- Flag2 (Relevance Check): Controls follow-up flow
+
+- Flag3 (Topic Shift Check): Handles context reset and conversation branching
+
+- Hash-based conversation tracking & concurrency-safe state management
+
+- Input guards, retry logic, fallback responses
+
+
+
+
+
+
+
+CAPABILITIES
+
+- Multi-law semantic retrieval
+
+- Article-level legal grounding
+
+- Yargıtay integration via auto-research
+
+- Structured reasoning and explainable outputs
+
+- Intelligent follow-up handling with context verification`,
       imageUrl: '',
       kaggleUrl: '',
-      tags: ['RAG', 'OCR', 'Semantic Search', 'Prompt Engineering', 'Fine-Tuning', 'ChromaDB', 'LlamaIndex', 'PyTorch', 'Google Cloud API Integration'],
+      tags: ['RAG', 'Agentic Systems', 'Multi-Agent Architecture', 'Prompt Engineering', 'LangChain', 'GenerativeAI', 'ChromaDB', 'PyTorch'],
       images: [
-        '/legal_ai/Ekran Görüntüsü (1407).png',
-        '/legal_ai/Ekran Görüntüsü (1408).png',
-        '/legal_ai/Ekran Görüntüsü (1409).png',
-        '/legal_ai/Ekran Görüntüsü (1410).png',
-        '/legal_ai/Ekran Görüntüsü (1411).png',
-        '/legal_ai/Ekran Görüntüsü (1412).png'
+        '/legal_ai/Ekran Görüntüsü (2179).png',
+        '/legal_ai/Ekran Görüntüsü (2181).png',
+        '/legal_ai/Ekran Görüntüsü (2182).png',
+        '/legal_ai/Ekran Görüntüsü (2183).png',
+        '/legal_ai/Ekran Görüntüsü (2184).png'
       ]
     },
     {
@@ -712,70 +781,77 @@ OUTCOME
                         <h3 className="text-white tracking-widest text-lg mb-4 uppercase cursor-default">{project.title}</h3>
                         <div className="text-gray-300 text-sm mb-4 leading-relaxed whitespace-pre-line cursor-default">
                           {project.description.split('\n').map((line, index) => {
-                            // Check if line is a section header (contains specific keywords and no dash)
-                            const isHeader = (
-                              (line.includes('Model Selection') || 
-                               line.includes('Dataset & RAG') || 
-                               line.includes('Model Upgrade') || 
-                               line.includes('Prompt Engineering') || 
-                               line.includes('Re-Ranking Layer') || 
-                               line.includes('This approach:') ||
-                               line.includes('Data Upload & Analysis') ||
-                               line.includes('Natural Language Queries') ||
-                               line.includes('Actionable Recommendations') ||
-                               line.includes('User Segments') ||
-                               line.includes('Focus') ||
-                               line.includes('Methodology') ||
-                               line.includes('Approach') ||
-                               line.includes('Highlights') ||
-                               line.includes('Cleaning') ||
-                               line.includes('Lifetimes Structure') ||
-                               line.includes('Problem') ||
-                               line.includes('Solution') ||
-                               line.includes('Notes / Limitations') ||
-                               line.includes('Results') ||
-                               line.includes('Marketing Actions') ||
-                               line.includes('GOAL') ||
-                               line.includes('ARCHITECTURE & AGENTS') ||
-                               line.includes('DATASET & MODEL') ||
-                               line.includes('USER FLOW') ||
-                               line.includes('FEATURES') ||
-                               line.includes('OUTCOME') ||
-                               line.includes('APPROACH') ||
-                               line.includes('RESULTS')) &&
-                              !line.startsWith('-')
+
+                            const trimmedLine = line.trim();
+
+                            const normalizedLine = trimmedLine.replace(/\([^)]*\)/g, '').trim();
+
+
+
+                            const matchesHeaderKeyword = SECTION_HEADER_KEYWORDS.some((keyword) =>
+
+                              normalizedLine.includes(keyword)
+
                             );
+
+                            const isAllCapsHeader = normalizedLine.length > 0 && normalizedLine === normalizedLine.toUpperCase();
+
+                            const isHeader = (matchesHeaderKeyword || isAllCapsHeader) && !trimmedLine.startsWith('-');
+
                             
+
                             // Check if line is a subsection header (specific bullet points to highlight)
-                            const isSubHeader = (
-                              line.includes('- Time-Based Weighted Average') ||
-                              line.includes('- From helpful_yes / helpful_no compute') ||
-                              line.includes('- Outputs')
-                            );
+
+                            const isSubHeader = SUB_HEADER_KEYWORDS.some((keyword) => line.includes(keyword));
+
                             
+
                             if (isHeader) {
-                              // ARCHITECTURE & AGENTS başlığına özel bir üst margin ekle
-                              const marginTopClass = line.includes('ARCHITECTURE & AGENTS') ? 'mt-6' : 'mt-4';
+
+                              // ARCHITECTURE & AGENTS basligina ozel bir ust margin ekle
+
+                              const marginTopClass = normalizedLine.includes('ARCHITECTURE & AGENTS') ? 'mt-6' : 'mt-4';
+
                               return (
+
                                 <div key={index} className={`text-white font-light text-sm mb-2 tracking-widest uppercase ${marginTopClass}`}>
+
                                   {line}
+
                                 </div>
+
                               );
+
                             }
+
                             
+
                             if (isSubHeader) {
+
                               return (
+
                                 <div key={index} className="text-white font-medium text-sm mt-3 mb-1 tracking-wide">
+
                                   {line}
+
                                 </div>
+
                               );
+
                             }
+
                             
+
                             return (
+
                               <div key={index}>
+
                                 {line}
+
                               </div>
+
                             );
+
                           })}
                         </div>
                         <div className="flex flex-wrap gap-2 mb-4">
