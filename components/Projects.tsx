@@ -19,6 +19,7 @@ const projectsData: Project[] = [
     description: 'Multi-stage Agentic RAG system with 8-agent pipeline for Turkish legal queries. Features modular architecture with domain classification, multi-law database selection, article retrieval, Yargıtay case law research, and intelligent follow-up handling. Includes 3 decision flags for flow control, hash-based conversation tracking, and context-aware answer synthesis.',
     imageUrl: '',
     kaggleUrl: '',
+    liveUrl: 'https://www.hukcep.com/',
     tags: ['RAG', 'Agentic Systems', 'Multi-Agent Architecture', 'Prompt Engineering', 'LangChain', 'GenerativeAI', 'ChromaDB', 'PyTorch'],
   },
   {

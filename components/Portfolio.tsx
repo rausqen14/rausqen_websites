@@ -200,6 +200,7 @@ CAPABILITIES
 - Intelligent follow-up handling with context verification`,
       imageUrl: '',
       kaggleUrl: '',
+      liveUrl: 'https://www.hukcep.com/',
       tags: ['RAG', 'Agentic Systems', 'Multi-Agent Architecture', 'Prompt Engineering', 'LangChain', 'GenerativeAI', 'ChromaDB', 'PyTorch'],
       images: [
         '/legal_ai/Ekran Görüntüsü (2179).png',
