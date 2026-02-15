@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Developer Portfolio</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Plus Jakarta Sans', 'sans-serif'],
+            display: ['Outfit', 'sans-serif'],
+          },
+          animation: {
+            'shine': 'shine 3s linear infinite',
+            'fade-in': 'fadeIn 0.5s ease-out forwards',
+            'float': 'float 6s ease-in-out infinite',
+          },
+          keyframes: {
+            shine: {
+              '0%': { backgroundPosition: '200% center' },
+              '100%': { backgroundPosition: '-200% center' },
+            },
+            fadeIn: {
+              '0%': { opacity: '0', transform: 'translateY(10px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            float: {
+              '0%, 100%': { transform: 'translateY(0)' },
+              '50%': { transform: 'translateY(-10px)' },
+            }
+          }
+        },
+      },
+    }
+  </script>
+  <script>
+    // iOS Height Fix (100vh includes address bar, which is annoying)
+    const setHeight = () => {
+      let vh = window.innerHeight * 0.01;
+      document.documentElement.style.setProperty('--vh', `${vh}px`);
+    };
+    window.addEventListener('resize', setHeight);
+    window.addEventListener('orientationchange', setHeight);
+    setHeight();
+  </script>
+  <style>
+    :root {
+      scrollbar-gutter: stable;
+      --vh: 1vh;
+      /* Dynamic helper for mobile address bar */
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
+      -webkit-tap-highlight-color: transparent;
+      /* Remove mobile tap gray box */
+    }
+
+    body {
+      background-color: #000;
+      color: #fff;
+      line-height: 1.5;
+      overscroll-behavior-y: none;
+    }
+
+    /* Fix for Safari Backdrop Blur */
+    .backdrop-blur-sm,
+    .backdrop-blur-md,
+    .backdrop-blur-lg,
+    .backdrop-blur-xl,
+    .backdrop-blur-2xl,
+    .backdrop-blur-3xl {
+      -webkit-backdrop-filter: var(--tw-backdrop-blur);
+      backdrop-filter: var(--tw-backdrop-blur);
+      /* Bridge Tailwind to Safari */
+    }
+
+    /* Custom Premium Scrollbar for Cross-OS consistency */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      transition: background 0.3s ease;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    /* Firefox scrollbar styling */
+    html {
+      scrollbar-width: thin;
+      scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+    }
+
+    /* Smooth image rendering */
+    img {
+      -webkit-user-drag: none;
+      image-rendering: -webkit-optimize-contrast;
+    }
+
+    /* Prevent unwanted zoom on mobile inputs */
+    input,
+    select,
+    textarea {
+      font-size: 16px !important;
+    }
+
+    /* Logic for keeping focus rings consistent */
+    :focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.5);
+      outline-offset: 2px;
+    }
+
+    /* Cursor Reset (Refined) */
+    * {
+      cursor: default;
+    }
+
+    a,
+    button,
+    [role="button"],
+    .cursor-pointer {
+      cursor: pointer;
+    }
+
+    input,
+    textarea {
+      cursor: text;
+    }
+
+    /* GPU Acceleration and performance for shiny text */
+    .animate-shine {
+      -webkit-backface-visibility: hidden;
+      backface-visibility: hidden;
+      -webkit-transform: translateZ(0);
+      transform: translateZ(0);
+      /* Force GPU layer */
+      perspective: 1000px;
+    }
+
+    /* Safari Smoothness Hack for Fixed Elements and Backdrops */
+    .relative,
+    .fixed {
+      -webkit-backface-visibility: hidden;
+    }
+
+    /* Slow down animation on mobile to save power/performance */
+    @media (max-width: 768px) {
+      .animate-shine {
+        animation-duration: 6s !important;
+      }
+    }
+  </style>
+  <script type="importmap">
+{
+  "imports": {
+    "react-dom/": "https://esm.sh/react-dom@^19.2.4/",
+    "lucide-react": "https://esm.sh/lucide-react@^0.563.0",
+    "react/": "https://esm.sh/react@^19.2.4/",
+    "react": "https://esm.sh/react@^19.2.4",
+    "@google/genai": "https://esm.sh/@google/genai@^1.41.0",
+    "react-router-dom": "https://esm.sh/react-router-dom@^7.13.0",
+    "framer-motion": "https://esm.sh/framer-motion@11.18.2",
+    "react-dom": "https://esm.sh/react-dom@^19.2.4"
+  }
+}
+</script>
+  <link rel="stylesheet" href="/index.css">
+</head>
+
+<body>
+  <div id="root"></div>
+  <script type="module" src="/index.tsx"></script>
+</body>
+
+</html>
