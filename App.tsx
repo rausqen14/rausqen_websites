@@ -10,6 +10,7 @@ import { ArrowRight, Code, Database, Layout, Layers, Cpu, Globe, Sparkles, Chevr
 import { useTheme } from './context/ThemeContext';
 import { Project } from './types';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 
 // --- Components ---
 
@@ -616,6 +617,7 @@ const ProjectsPage: React.FC = () => {
 const App: React.FC = () => {
   return (
     <HashRouter>
+      <Analytics />
       <div className="bg-neutral-50 dark:bg-black min-h-screen text-black dark:text-white selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black transition-colors duration-300">
 
         {/* Modern Ambient Background */}
