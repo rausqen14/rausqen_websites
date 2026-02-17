@@ -16,7 +16,12 @@ export const ShinyText: React.FC<ShinyTextProps> = ({ text, className = "", tag 
   return (
     <Tag
       className={`
-        inline-block text-neutral-800 dark:text-neutral-200
+        inline-block bg-clip-text text-transparent 
+        bg-gradient-to-r 
+        from-neutral-600 via-black to-neutral-600 
+        dark:from-neutral-400 dark:via-white dark:to-neutral-400 
+        bg-[length:200%_auto] animate-shine px-2 pt-2 leading-tight
+        will-change-[background-position] transform-gpu
         ${className}
       `}
     >
